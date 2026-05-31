@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excel Pro - باسل غانم</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+/* ── BASE ── */
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap');
+:root {
+  --teal:#099999;--teal-light:#0bbdbd;--teal-dark:#077777;
+  --teal-glow:rgba(9,153,153,.35);--teal-subtle:rgba(9,153,153,.08);
+  --bg:#080c10;--bg-2:#0d1117;--bg-3:#111820;
+  --surface:#141c25;--surface-2:#1a2433;--surface-3:#202d3e;
+  --border:rgba(255,255,255,.07);--border-teal:rgba(9,153,153,.25);
+  --text-primary:#f0f4f8;--text-secondary:#8fa3b8;--text-muted:#4a6075;
+  --gold:#d4a843;--gold-light:#f0c060;
+  --radius-sm:8px;--radius-md:16px;--radius-lg:24px;--radius-xl:36px;
+  --shadow-teal:0 0 40px rgba(9,153,153,.2);
+  --shadow-card:0 8px 32px rgba(0,0,0,.4);
+  --transition:.35s cubic-bezier(.25,.46,.45,.94);
+  --transition-fast:.18s ease;
+}
+[data-theme="light"]{
+  --bg:#f0f4f8;--bg-2:#e8eef4;--bg-3:#dde5ee;
+  --surface:#fff;--surface-2:#f5f8fb;--surface-3:#eaf0f6;
+  --border:rgba(0,0,0,.08);--border-teal:rgba(9,153,153,.2);
+  --text-primary:#0d1117;--text-secondary:#4a6075;--text-muted:#8fa3b8;
+  --shadow-card:0 8px 32px rgba(0,0,0,.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{direction:rtl;scroll-behavior:smooth}
+body{font-family:'Almarai',sans-serif;background:var(--bg);color:var(--text-primary);line-height:1.7;overflow-x:hidden;transition:background .35s,color .35s}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg-2)}::-webkit-scrollbar-thumb{background:var(--teal);border-radius:2px}
+::selection{background:var(--teal);color:#fff}
+h1,h2,h3,h4{font-weight:800;line-height:1.2}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;right:0;left:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;height:72px;
+  background:rgba(8,12,16,.75);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  transition:background .35s;
+}
+[data-theme="light"] nav{background:rgba(240,244,248,.85)}
+.nav-logo{display:flex;align-items:center;gap:12px;font-size:1.25rem;font-weight:800;color:var(--teal)}
+.logo-box{width:38px;height:38px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff;font-weight:800;box-shadow:0 4px 16px var(--teal-glow)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:.95rem;color:var(--text-secondary);transition:color var(--transition-fast);font-weight:700}
+.nav-links a:hover{color:var(--teal)}
+.nav-right{display:flex;align-items:center;gap:14px}
+.theme-btn{width:42px;height:42px;border-radius:12px;border:1.5px solid var(--border);background:var(--surface);color:var(--text-secondary);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:var(--transition-fast)}
+.theme-btn:hover{border-color:var(--teal);color:var(--teal)}
+.cta-nav{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:50px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;font-family:'Almarai',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;border:none;box-shadow:0 4px 20px var(--teal-glow);transition:var(--transition)}
+.cta-nav:hover{transform:translateY(-2px);box-shadow:0 8px 32px var(--teal-glow)}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;padding:120px 48px 80px;text-align:center;
+}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+.orb-1{width:600px;height:600px;background:var(--teal);opacity:.07;top:-150px;right:-150px;animation:floatOrb 8s ease-in-out infinite}
+.orb-2{width:400px;height:400px;background:#099999;opacity:.05;bottom:-100px;left:-100px;animation:floatOrb 10s ease-in-out infinite reverse}
+.orb-3{width:300px;height:300px;background:var(--gold);opacity:.04;top:50%;left:50%;transform:translate(-50%,-50%);animation:floatOrb 12s ease-in-out infinite}
+@keyframes floatOrb{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-40px) scale(1.05)}}
+
+.grid-lines{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:.4;mask-image:radial-gradient(ellipse 80% 60% at center,black 30%,transparent 80%)}
+
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:50px;background:var(--teal-subtle);border:1px solid var(--border-teal);color:var(--teal);font-size:.85rem;font-weight:700;margin-bottom:32px;opacity:0}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+.hero-title{font-size:clamp(2.8rem,7vw,6rem);font-weight:800;line-height:1.1;margin-bottom:28px;opacity:0}
+.hero-title .line-1{display:block;color:var(--text-secondary);font-weight:300;font-size:clamp(1.4rem,3vw,2.4rem);margin-bottom:16px}
+.hero-title .accent{background:linear-gradient(135deg,var(--teal-light),var(--teal),var(--teal-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-title .gold{background:linear-gradient(135deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--text-secondary);max-width:600px;margin:0 auto 48px;font-weight:400;opacity:0}
+
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;opacity:0}
+.btn-hero{display:inline-flex;align-items:center;gap:10px;padding:18px 48px;border-radius:50px;font-family:'Almarai',sans-serif;font-size:1.1rem;font-weight:700;cursor:pointer;border:none;transition:var(--transition);position:relative;overflow:hidden}
+.btn-hero-primary{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;box-shadow:0 8px 40px var(--teal-glow)}
+.btn-hero-primary:hover{transform:translateY(-3px);box-shadow:0 16px 60px var(--teal-glow)}
+.btn-hero-ghost{background:transparent;color:var(--text-primary);border:1.5px solid var(--border);backdrop-filter:blur(10px)}
+.btn-hero-ghost:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-subtle)}
+
+.hero-stats{display:flex;align-items:center;justify-content:center;gap:48px;margin-top:72px;padding-top:48px;border-top:1px solid var(--border);opacity:0;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-size:2.2rem;font-weight:800;color:var(--teal);display:block}
+.stat-label{font-size:.85rem;color:var(--text-muted);font-weight:400}
+
+/* ── MOUSE FOLLOWER ── */
+.cursor-follow{position:fixed;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(9,153,153,.06),transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:opacity .5s;opacity:0}
+
+/* ── SCROLL INDICATOR ── */
+.scroll-ind{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text-muted);font-size:.8rem;opacity:0;animation:fadeIn 1s 2s forwards}
+@keyframes fadeIn{to{opacity:1}}
+.scroll-ind-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--teal),transparent);animation:scrollLine 2s ease-in-out infinite}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ── BENEFITS ── */
+#benefits{padding:120px 48px;position:relative}
+.section-tag{text-align:center;margin-bottom:20px}
+.section-title{text-align:center;font-size:clamp(2rem,4vw,3.2rem);margin-bottom:16px}
+.section-sub{text-align:center;color:var(--text-secondary);font-size:1.05rem;max-width:500px;margin:0 auto 72px;font-weight:400}
+
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto}
+.benefit-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px 28px;transition:var(--transition);position:relative;overflow:hidden}
+.benefit-card::before{content:'';position:absolute;top:0;right:0;left:0;height:2px;background:linear-gradient(90deg,transparent,var(--teal),transparent);opacity:0;transition:opacity var(--transition)}
+.benefit-card:hover{border-color:var(--border-teal);box-shadow:var(--shadow-teal);transform:translateY(-6px)}
+.benefit-card:hover::before{opacity:1}
+.benefit-icon{width:56px;height:56px;border-radius:16px;background:var(--teal-subtle);border:1px solid var(--border-teal);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:24px}
+.benefit-title{font-size:1.15rem;font-weight:800;margin-bottom:12px}
+.benefit-desc{color:var(--text-secondary);font-size:.9rem;font-weight:400;line-height:1.8}
+
+/* ── INSTRUCTOR ── */
+#instructor{padding:120px 48px;position:relative;overflow:hidden}
+.instructor-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.instructor-visual{position:relative}
+.instructor-img-wrap{position:relative;display:inline-block}
+.instructor-img{width:100%;max-width:420px;border-radius:28px;display:block;object-fit:cover;aspect-ratio:4/5;filter:grayscale(15%) contrast(1.05)}
+.img-frame{position:absolute;inset:-12px;border-radius:36px;border:1.5px solid var(--border-teal);pointer-events:none}
+.img-glow{position:absolute;inset:-40px;border-radius:50%;background:radial-gradient(circle,rgba(9,153,153,.12),transparent 70%);pointer-events:none}
+.badge-float{position:absolute;background:var(--surface);border:1px solid var(--border-teal);border-radius:var(--radius-md);padding:14px 20px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-card)}
+.badge-float-1{bottom:-20px;left:-20px}
+.badge-float-2{top:40px;left:-30px}
+.badge-float .bf-icon{font-size:1.5rem}
+.badge-float .bf-text strong{display:block;font-weight:800;font-size:.95rem}
+.badge-float .bf-text span{color:var(--text-muted);font-size:.8rem}
+
+.instructor-content .badge-line{display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:50px;background:var(--teal-subtle);border:1px solid var(--border-teal);color:var(--teal);font-size:.8rem;font-weight:700;margin-bottom:28px}
+.instructor-name{font-size:clamp(2rem,3.5vw,3rem);font-weight:800;margin-bottom:8px}
+.instructor-title{color:var(--teal);font-size:1rem;font-weight:700;margin-bottom:28px}
+.instructor-bio{color:var(--text-secondary);font-size:.95rem;line-height:1.9;margin-bottom:36px;font-weight:400}
+.creds{display:flex;flex-direction:column;gap:14px;margin-bottom:40px}
+.cred-item{display:flex;align-items:center;gap:14px;padding:14px 20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md)}
+.cred-item .ci-icon{font-size:1.2rem;min-width:28px;text-align:center}
+.cred-item .ci-text{font-size:.9rem;font-weight:700}
+.cred-item .ci-sub{font-size:.8rem;color:var(--text-muted);font-weight:400}
+
+/* ── CURRICULUM ── */
+#curriculum{padding:120px 48px;background:var(--bg-2)}
+.curriculum-wrap{max-width:900px;margin:0 auto}
+.timeline{position:relative;padding-right:40px}
+.timeline::before{content:'';position:absolute;top:0;bottom:0;right:16px;width:2px;background:linear-gradient(to bottom,var(--teal),var(--border),transparent)}
+.tl-item{display:flex;align-items:flex-start;gap:24px;margin-bottom:28px;position:relative;flex-direction:row-reverse}
+.tl-dot{position:absolute;right:-40px;top:20px;width:32px;height:32px;border-radius:50%;background:var(--surface);border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:var(--teal);flex-shrink:0;transition:var(--transition)}
+.tl-item:hover .tl-dot{background:var(--teal);color:#fff;box-shadow:0 0 20px var(--teal-glow)}
+.tl-card{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:22px 28px;transition:var(--transition)}
+.tl-item:hover .tl-card{border-color:var(--border-teal);transform:translateX(-4px)}
+.tl-num{font-size:.75rem;color:var(--teal);font-weight:800;margin-bottom:6px}
+.tl-title{font-size:1rem;font-weight:800}
+.tl-desc{font-size:.85rem;color:var(--text-secondary);font-weight:400;margin-top:6px}
+
+/* ── TESTIMONIALS ── */
+#testimonials{padding:120px 48px;position:relative}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:72px auto 0}
+.t-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;transition:var(--transition);position:relative}
+.t-card:hover{border-color:var(--border-teal);box-shadow:var(--shadow-teal);transform:translateY(-4px)}
+.t-stars{color:var(--gold);font-size:1rem;margin-bottom:16px}
+.t-text{color:var(--text-secondary);font-size:.9rem;line-height:1.8;font-weight:400;margin-bottom:24px}
+.t-author{display:flex;align-items:center;gap:12px}
+.t-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-dark));display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:.9rem}
+.t-name{font-weight:800;font-size:.9rem}
+.t-role{font-size:.75rem;color:var(--text-muted)}
+.quote-mark{position:absolute;top:20px;left:24px;font-size:4rem;color:var(--teal);opacity:.08;font-family:serif;line-height:1}
+
+/* ── CTA SECTION ── */
+#cta{padding:120px 48px;text-align:center;position:relative;overflow:hidden}
+.cta-box{max-width:700px;margin:0 auto;position:relative;z-index:1}
+.cta-title{font-size:clamp(2.2rem,4vw,3.5rem);margin-bottom:24px}
+.cta-sub{color:var(--text-secondary);font-size:1.05rem;margin-bottom:48px;font-weight:400}
+.cta-btns{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.cta-bg-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(9,153,153,.08),transparent 70%)}
+
+/* ── FOOTER ── */
+footer{background:var(--bg-2);border-top:1px solid var(--border);padding:40px 48px;text-align:center}
+.footer-logo{font-size:1.2rem;font-weight:800;color:var(--teal);margin-bottom:16px}
+.footer-text{color:var(--text-muted);font-size:.85rem}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  #hero{padding:100px 24px 60px}
+  .hero-stats{gap:24px}
+  #benefits{padding:80px 24px}
+  .benefits-grid{grid-template-columns:1fr}
+  #instructor{padding:80px 24px}
+  .instructor-wrap{grid-template-columns:1fr;gap:48px}
+  .badge-float-1{bottom:-10px;left:10px}
+  .badge-float-2{display:none}
+  #curriculum{padding:80px 24px}
+  .timeline{padding-right:28px}
+  .timeline::before{right:10px}
+  .tl-dot{right:-28px;width:20px;height:20px;font-size:.6rem}
+  #testimonials{padding:80px 24px}
+  .testimonials-grid{grid-template-columns:1fr}
+  #cta{padding:80px 24px}
+  footer{padding:32px 24px}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-follow" id="cursorFollow"></div>
+
+<nav id="mainNav">
+  <div class="nav-logo">
+    <div class="logo-box">X</div>
+    <span>Excel Pro</span>
+  </div>
+  <div class="nav-links">
+    <a href="#benefits">المميزات</a>
+    <a href="#instructor">المدرب</a>
+    <a href="#curriculum">المحتوى</a>
+    <a href="#testimonials">آراء الطلاب</a>
+  </div>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeToggle" title="تغيير المظهر">🌙</button>
+    <button class="cta-nav" onclick="location.href='login.html'">ابدأ الآن ←</button>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg">
+    <div class="grid-lines"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="hero-badge" id="heroBadge">
+    <span class="dot"></span>
+    دورة Excel الاعلى تقييماً في المنطقة العربية
+  </div>
+
+  <h1 class="hero-title" id="heroTitle">
+    <span class="line-1">أتقن Excel</span>
+    <span class="accent">من الصفر</span>
+    <br>إلى <span class="gold">الاحتراف</span>
+  </h1>
+
+  <p class="hero-sub" id="heroSub">
+    تعلّم Excel بأسلوب مختلف - بسيط، عملي، وقابل للتطبيق من أول يوم. مع خبير حقيقي يفهم ما تحتاجه.
+  </p>
+
+  <div class="hero-actions" id="heroActions">
+    <button class="btn-hero btn-hero-primary" onclick="location.href='login.html'">
+      ابدأ رحلتك الآن
+      <span>←</span>
+    </button>
+    <button class="btn-hero btn-hero-ghost" onclick="location.href='#curriculum'">
+      استعرض المحتوى
+    </button>
+  </div>
+
+  <div class="hero-stats" id="heroStats">
+    <div class="stat"><span class="stat-num" data-target="15">0</span><span class="stat-label">سنة خبرة</span></div>
+    <div class="stat"><span class="stat-num" data-target="11">0</span><span class="stat-label">محاضرة متكاملة</span></div>
+    <div class="stat"><span class="stat-num" data-target="500">0</span><span class="stat-label">طالب استفاد</span></div>
+    <div class="stat"><span class="stat-num" data-target="98">0</span><span class="stat-label">٪ رضا</span></div>
+  </div>
+
+  <div class="scroll-ind">
+    <div class="scroll-ind-line"></div>
+    <span>اسحب للأسفل</span>
+  </div>
+</section>
+
+<section id="benefits">
+  <div class="section-tag">
+    <span style="display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:50px;background:var(--teal-subtle);border:1px solid var(--border-teal);color:var(--teal);font-size:.8rem;font-weight:700">✦ لماذا هذه الدورة؟</span>
+  </div>
+  <h2 class="section-title reveal">تعلّم بالطريقة الصحيحة</h2>
+  <p class="section-sub reveal">كل محاضرة مصممة لتحقق أثراً حقيقياً في عملك اليومي</p>
+
+  <div class="benefits-grid">
+    <div class="benefit-card reveal">
+      <div class="benefit-icon">🎯</div>
+      <h3 class="benefit-title">تطبيق فوري</h3>
+      <p class="benefit-desc">كل درس مصمم ليُطبَّق مباشرة في بيئة عملك - لا نظريات فارغة.</p>
+    </div>
+    <div class="benefit-card reveal">
+      <div class="benefit-icon">⚡</div>
+      <h3 class="benefit-title">وتيرة مرنة</h3>
+      <p class="benefit-desc">تعلّم متى تشاء وبالسرعة التي تناسبك، مع وصول غير محدود للمحتوى.</p>
+    </div>
+    <div class="benefit-card reveal">
+      <div class="benefit-icon">📊</div>
+      <h3 class="benefit-title">محتوى احترافي</h3>
+      <p class="benefit-desc">من أساسيات Excel إلى تحليل البيانات المتقدم - رحلة متكاملة.</p>
+    </div>
+    <div class="benefit-card reveal">
+      <div class="benefit-icon">🧠</div>
+      <h3 class="benefit-title">أسلوب مبسّط</h3>
+      <p class="benefit-desc">مفاهيم معقدة تُشرح ببساطة مذهلة - هذا هو الفارق الحقيقي.</p>
+    </div>
+    <div class="benefit-card reveal">
+      <div class="benefit-icon">📁</div>
+      <h3 class="benefit-title">ملفات قابلة للتنزيل</h3>
+      <p class="benefit-desc">كل محاضرة مرفقة بملفات Excel جاهزة للتطبيق والتدريب.</p>
+    </div>
+    <div class="benefit-card reveal">
+      <div class="benefit-icon">🏆</div>
+      <h3 class="benefit-title">خبرة معتمدة</h3>
+      <p class="benefit-desc">تعلّم من خبير معتمد في Power BI وExcel بخبرة 15 عاماً حقيقية.</p>
+    </div>
+  </div>
+</section>
+
+<section id="instructor">
+  <div class="instructor-wrap">
+    <div class="instructor-visual reveal">
+      <div class="instructor-img-wrap">
+        <div class="img-glow"></div>
+        <img src="https://raw.githubusercontent.com/BaselGhanem/Portfolio/refs/heads/main/BaselGhanem.jpg" alt="Basel Ghanem" class="instructor-img" onerror="this.style.background='linear-gradient(135deg,#099999,#077777)';this.removeAttribute('src')">
+        <div class="img-frame"></div>
+
+        <div class="badge-float badge-float-1">
+          <span class="bf-icon">⭐</span>
+          <div class="bf-text"><strong>خبير معتمد</strong><span>Power BI & Excel</span></div>
+        </div>
+        <div class="badge-float badge-float-2">
+          <span class="bf-icon">📈</span>
+          <div class="bf-text"><strong>+15 سنة</strong><span>خبرة دولية</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="instructor-content reveal">
+      <div class="badge-line">✦ المدرب</div>
+      <h2 class="instructor-name">Basel Ghanem</h2>
+      <p class="instructor-title">خبير Excel & ذكاء الأعمال</p>
+      <p class="instructor-bio">أكثر من 15 عاماً من الخبرة في الشركات متعددة الجنسيات في إدارة البيانات وذكاء الأعمال. خبير معتمد في Power BI و Excel، وشغوف بتبسيط المفاهيم المعقدة لجعلها قابلة للتطبيق بفاعلية.</p>
+
+      <div class="creds">
+        <div class="cred-item">
+          <span class="ci-icon">🏢</span>
+          <div><div class="ci-text">شركات متعددة الجنسيات</div><div class="ci-sub">خبرة في بيئات عمل دولية</div></div>
+        </div>
+        <div class="cred-item">
+          <span class="ci-icon">📊</span>
+          <div><div class="ci-text">معتمد في Power BI & Excel</div><div class="ci-sub">شهادات دولية معتمدة</div></div>
+        </div>
+        <div class="cred-item">
+          <span class="ci-icon">🎓</span>
+          <div><div class="ci-text">مدرب ومستشار</div><div class="ci-sub">ذكاء الأعمال وتحليل البيانات</div></div>
+        </div>
+      </div>
+
+      <button class="btn-hero btn-hero-primary" onclick="location.href='login.html'">تعلّم معه الآن ←</button>
+    </div>
+  </div>
+</section>
+
+<section id="curriculum">
+  <div class="curriculum-wrap">
+    <div class="section-tag" style="margin-bottom:20px"><span style="display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:50px;background:var(--teal-subtle);border:1px solid var(--border-teal);color:var(--teal);font-size:.8rem;font-weight:700">✦ المنهج</span></div>
+    <h2 class="section-title reveal" style="margin-bottom:12px">محتوى الدورة</h2>
+    <p class="section-sub reveal">11 محاضرة مترابطة تأخذك من البداية للاحتراف</p>
+
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-dot">1</div>
+        <div class="tl-card"><div class="tl-num">المحاضرة الأولى</div><div class="tl-title">مقدمة في Excel</div><div class="tl-desc">التعرف على الواجهة، الأدوات الأساسية، وأهمية Excel في عالم الأعمال.</div></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">2</div>
+        <div class="tl-card"><div class="tl-num">المحاضرة الثانية</div><div class="tl-title">الصيغ والدوال الأساسية</div><div class="tl-desc">SUM، AVERAGE، COUNT وكيفية توظيفها في الحياة العملية.</div></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">3</div>
+        <div class="tl-card"><div class="tl-num">المحاضرة الثالثة</div><div class="tl-title">تنظيم وتنسيق البيانات</div><div class="tl-desc">جداول منظمة واحترافية تعكس مهارتك في إدارة البيانات.</div></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">4</div>
+        <div class="tl-card"><div class="tl-num">المحاضرة الرابعة</div><div class="tl-title">الدوال المتقدمة</div><div class="tl-desc">VLOOKUP، IF، INDEX-MATCH - أدوات المحترفين.</div></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">5</div>
+        <div class="tl-card"><div class="tl-num">المحاضرة الخامسة</div><div class="tl-title">تحليل البيانات</div><div class="tl-desc">فرز، تصفية، وتلخيص البيانات بطرق احترافية.</div></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">6</div>
+        <div class="tl-card"><div class="tl-num">المحاضرة السادسة</div><div class="tl-title">الطباعة، التنقل، و VLOOKUP</div><div class="tl-desc">احتراف الطباعة والتنقل السريع وخفايا دالة البحث المتقدمة.</div></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">7</div>
+        <div class="tl-card"><div class="tl-num">المحاضرة السابعة</div><div class="tl-title">المصفوفات ودالة XLOOKUP</div><div class="tl-desc">الجيل الجديد من معادلات البحث والمصفوفات الديناميكية القوية.</div></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">8</div>
+        <div class="tl-card"><div class="tl-num">المحاضرة الثامنة</div><div class="tl-title">Flash Fill & INDEX MATCH</div><div class="tl-desc">أتمتة تنظيف البيانات واحتراف السلاح السري للبحث.</div></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">9</div>
+        <div class="tl-card"><div class="tl-num">المحاضرة التاسعة</div><div class="tl-title">عمالقة الشروط والحماية</div><div class="tl-desc">IF المتداخلة، SUMIFS، وتشفير ملفاتك بأساليب متعددة.</div></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">10</div>
+        <div class="tl-card"><div class="tl-num">المحاضرة العاشرة</div><div class="tl-title">Pivot Table & Slicers</div><div class="tl-desc">السحر المطلق لتلخيص ملايين البيانات بضغطة زر وبدون أي معادلات.</div></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">11</div>
+        <div class="tl-card"><div class="tl-num">المحاضرة الحادية عشرة</div><div class="tl-title">مشروع بناء Dashboard احترافي</div><div class="tl-desc">تطبيق شامل لدمج جميع مهاراتك وبناء لوحة تحكم تفاعلية من الصفر.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="section-tag"><span style="display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:50px;background:var(--teal-subtle);border:1px solid var(--border-teal);color:var(--teal);font-size:.8rem;font-weight:700">✦ آراء الطلاب</span></div>
+  <h2 class="section-title reveal">ماذا يقولون؟</h2>
+  <p class="section-sub reveal">نتائج حقيقية من طلاب حقيقيين</p>
+
+  <div class="testimonials-grid">
+    <div class="t-card reveal">
+      <span class="quote-mark">"</span>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">أسلوب الشرح مختلف تماماً - بسيط جداً وعملي. تعلمت في أسبوع ما لم أستطع تعلمه في سنوات.</p>
+      <div class="t-author"><div class="t-avatar">أ</div><div><div class="t-name">أحمد الزعبي</div><div class="t-role">محاسب</div></div></div>
+    </div>
+    <div class="t-card reveal">
+      <span class="quote-mark">"</span>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">محتوى راقٍ ومنظم. باسل يعرف بالضبط كيف يوصل المعلومة بشكل لا يُنسى. أنصح به بشدة.</p>
+      <div class="t-author"><div class="t-avatar">س</div><div><div class="t-name">سارة النابلسي</div><div class="t-role">مديرة مشاريع</div></div></div>
+    </div>
+    <div class="t-card reveal">
+      <span class="quote-mark">"</span>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">أخيراً دورة Excel تستحق الوقت والجهد. الملفات التطبيقية ذهب خالص - وفّرت علي ساعات يومياً.</p>
+      <div class="t-author"><div class="t-avatar">م</div><div><div class="t-name">محمد الحوراني</div><div class="t-role">محلل بيانات</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="cta-bg-glow"></div>
+  <div class="cta-box">
+    <div class="section-tag" style="margin-bottom:24px"><span style="display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:50px;background:var(--teal-subtle);border:1px solid var(--border-teal);color:var(--teal);font-size:.8rem;font-weight:700">✦ ابدأ اليوم</span></div>
+    <h2 class="cta-title reveal">هل أنت جاهز للانطلاق؟</h2>
+    <p class="cta-sub reveal">لا تؤجل. المهارة التي تتعلمها اليوم هي ميزتك التنافسية غداً.</p>
+    <div class="cta-btns reveal">
+      <button class="btn-hero btn-hero-primary" onclick="location.href='login.html'">تصفح الدورة الان ←</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Excel Pro - Basel Ghanem</div>
+  <p class="footer-text">© 2026 جميع الحقوق محفوظة · X Academy</p>
+</footer>
+
+<script>
+// GSAP animations
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero entrance
+gsap.timeline()
+  .to('#heroBadge', {opacity:1, y:0, duration:.7, ease:'power3.out'})
+  .to('#heroTitle', {opacity:1, y:0, duration:.8, ease:'power3.out'}, '-=.3')
+  .to('#heroSub', {opacity:1, y:0, duration:.7, ease:'power3.out'}, '-=.4')
+  .to('#heroActions', {opacity:1, y:0, duration:.7, ease:'power3.out'}, '-=.3')
+  .to('#heroStats', {opacity:1, y:0, duration:.7, ease:'power3.out'}, '-=.2');
+
+// Counter animation
+function animateCounter(el) {
+  const target = +el.dataset.target;
+  const suffix = el.textContent.includes('٪') ? '٪' : '+';
+  let start = 0;
+  const step = target / 60;
+  const interval = setInterval(() => {
+    start = Math.min(start + step, target);
+    el.textContent = Math.floor(start) + (target > 10 ? suffix : '');
+    if (start >= target) clearInterval(interval);
+  }, 20);
+}
+
+// Stats observer
+const statsSection = document.getElementById('heroStats');
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('[data-target]').forEach(animateCounter);
+      counterObserver.unobserve(e.target);
+    }
+  });
+}, {threshold: .5});
+counterObserver.observe(statsSection);
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, {threshold: .15, rootMargin: '0px 0px -50px 0px'});
+reveals.forEach(r => {
+  r.style.opacity = '0';
+  r.style.transform = 'translateY(40px)';
+  r.style.transition = 'opacity .7s ease, transform .7s ease';
+  revealObserver.observe(r);
+});
+document.querySelectorAll('.reveal.visible').forEach(r => {
+  r.style.opacity = '1';
+  r.style.transform = 'translateY(0)';
+});
+document.addEventListener('scroll', () => {}, {passive:true});
+const revealStyle = document.createElement('style');
+revealStyle.textContent = '.reveal.visible{opacity:1 !important;transform:translateY(0) !important}';
+document.head.appendChild(revealStyle);
+
+// Mouse follow
+const cursor = document.getElementById('cursorFollow');
+let mouseX=0, mouseY=0, curX=0, curY=0;
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursor.style.opacity = '1';
+});
+function animateCursor() {
+  curX += (mouseX - curX) * .08;
+  curY += (mouseY - curY) * .08;
+  cursor.style.left = curX + 'px';
+  cursor.style.top = curY + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// Theme toggle
+const themeToggle = document.getElementById('themeToggle');
+let isDark = true;
+themeToggle.addEventListener('click', () => {
+  isDark = !isDark;
+  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  themeToggle.textContent = isDark ? '🌙' : '☀️';
+});
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  nav.style.background = window.scrollY > 50
+    ? 'rgba(8,12,16,.95)' : 'rgba(8,12,16,.75)';
+}, {passive:true});
+
+// Parallax hero orbs
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  document.querySelectorAll('.orb').forEach((orb,i) => {
+    orb.style.transform = `translateY(${y * (0.1 + i*0.05)}px)`;
+  });
+}, {passive:true});
+</script>
+</body>
+</html>
