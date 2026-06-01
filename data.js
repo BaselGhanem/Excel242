@@ -56,7 +56,7 @@ const CourseDataMap = new Map([
     desc: 'التعرف على الواجهة، شريط الأدوات (Ribbons)، وأهمية Excel في عالم الأعمال.', 
     story: 'نبدأ رحلتنا بكسر الجدار الأول مع الإكسل. سنتعرف على الواجهة بالتفصيل، ونغوص في شريط الأدوات (Ribbons) لنشرح كل أيقونة وكيفية استخدامها للتحكم الكامل بأوراق العمل.', 
     objectives: ['التعرف على واجهة Excel وأدواته', 'فهم شريط الأدوات (Ribbons) ووظيفة كل أيقونة', 'التنقل بكفاءة داخل أوراق العمل'], 
-    videoUrl: 'https://1drv.ms/v/c/a1a27fad04d192e9/IQAnivPtSWYAT6f2cV68amFaAV2vPbWmIZl4eC4rDHDsBi4?e=H1Pbeq', 
+    videoUrl: 'https://1drv.ms/v/c/a1a27fad04d192e9/IQQnivPtSWYAT6f2cV68amFaAXEZJ-JM-FzbbAHo4LV_wcE', 
     _filesCodes: ['F1'],
     duration: 45, difficultyLevel: 'Beginner', progressWeight: 5, prerequisites: [],
     quiz: { id: 'q1', questions: 3 }
