@@ -66,7 +66,7 @@ const CourseDataMap = new Map([
     desc: 'SUM، AVERAGE، COUNT وكيفية توظيفها في الحياة العملية.', 
     story: 'في هذه المحاضرة سننتقل من مجرد إدخال البيانات إلى جعل Excel يحسب نيابة عنك. سنتعلم أهم الدوال الأساسية التي لا غنى عنها في أي بيئة عمل.', 
     objectives: ['فهم الهيكل الصحيح لكتابة الصيغ', 'تطبيق دوال الجمع والمتوسط (SUM, AVERAGE)', 'استخدام دوال العد (COUNT) وتجنب الأخطاء'], 
-    videoUrl: '', 
+    videoUrl: 'المحاضرة لم تتم بعد', 
     _filesCodes: ['F2', 'F3'],
     duration: 60, difficultyLevel: 'Beginner', progressWeight: 10, prerequisites: [1],
     quiz: { id: 'q2', questions: 5 }
@@ -76,7 +76,7 @@ const CourseDataMap = new Map([
     desc: 'تعديل الشيتات المتعددة، اختصارات هامة، اللصق الخاص (Paste Special) ومقدمة للرسوم البيانية.', 
     story: 'محاضرة دسمة جداً! سنتعلم خدعاً توفر الكثير من الوقت مثل التعديل على عدة أوراق عمل في نفس اللحظة (Multiple Sheets)، وأسرار اللصق الخاص، بالإضافة إلى مقدمة في الرسوم البيانية وأهم اختصارات الكيبورد.', 
     objectives: ['التعديل على أوراق عمل متعددة دفعة واحدة (Ctrl + Select)', 'استخدام اللصق الخاص (Paste Special) باحترافية', 'إنشاء الرسوم البيانية (Charts) واستخدام اختصارات الإكسل'], 
-    videoUrl: 'https://1drv.ms/v/c/a1a27fad04d192e9/IQRo2LpEw6SgQ5cy-iPyhJhIAWsN2YTN79rxvR_KRfzoSDc', 
+    videoUrl: 'المحاضرة لم تتم بعد', 
     _filesCodes: ['F4', 'F5', 'F6', 'F7', 'F8'],
     duration: 75, difficultyLevel: 'Intermediate', progressWeight: 10, prerequisites: [2],
     quiz: { id: 'q3', questions: 4 }
@@ -86,7 +86,7 @@ const CourseDataMap = new Map([
     desc: 'احتراف التنسيق الشرطي (Conditional Formatting) ودوال العد والمجاميع المتقدمة.', 
     story: 'نبدأ برفع مستوى الاحتراف. سنتعمق في التنسيق الشرطي الديناميكي لنجعل التقارير تتفاعل مع البيانات تلقائياً. وسنستكشف قوة دوال العد المتقدمة (Counts) وأدوات المجاميع (Subtotal & SumProduct) التي تفصل المحترف عن المبتدئ.', 
     objectives: ['إتقان التنسيق الشرطي الديناميكي (Dynamic Design)', 'استخدام دوال Subtotal و SumProduct باحتراف', 'احتراف دوال العد المتقدمة (Mastering Counts)'], 
-    videoUrl: 'https://1drv.ms/v/c/a1a27fad04d192e9/IQRO-5Vwp87MQZl8bklQ2UYHAQoqzY1n4JI3XGkiX_S0SII', 
+    videoUrl: 'المحاضرة لم تتم بعد', 
     _filesCodes: ['F9', 'F10', 'F11', 'F12', 'F13'],
     duration: 80, difficultyLevel: 'Advanced', progressWeight: 10, prerequisites: [2, 3],
     quiz: { id: 'q4', questions: 5 }
@@ -96,7 +96,7 @@ const CourseDataMap = new Map([
     desc: 'تسهيل المعادلات بـ Name Manager، التحكم بالمدخلات بـ Data Validation، واحتراف دالة VLOOKUP الأسطورية.', 
     story: 'هل أنت مستعد لنقلة نوعية؟ في هذه المحاضرة الحماسية سنكتشف كيف نجعل حياتنا والمعادلات المعقدة أسهل بكثير باستخدام الـ Name Manager. سنتعلم أيضاً كيف نفرض سيطرتنا على مدخلات المستخدمين عبر Data Validation (ونضيف لمستنا الخاصة برسائل خطأ مضحكة!). ومسك الختام سيكون مع "سيمفونية البحث".. نعم، سنتعلم معاً أعظم دالة في الإكسل: VLOOKUP، لنجعل البيانات تبحث عن نفسها بنفسها!', 
     objectives: ['تسهيل قراءة وكتابة المعادلات المعقدة باستخدام Name Manager', 'تقييد إدخال البيانات وإنشاء رسائل خطأ مخصصة عبر Data Validation', 'احتراف دالة VLOOKUP لربط البيانات والبحث عنها بلمح البصر'], 
-    videoUrl: 'https://1drv.ms/v/c/a1a27fad04d192e9/IQRyTqZGsYWpQ4BFaLNCB5sJARxjBruaQnd24lJXmBjV6Eg', 
+    videoUrl: 'المحاضرة لم تتم بعد', 
     _filesCodes: ['F14', 'F15', 'F16'],
     duration: 90, difficultyLevel: 'Advanced', progressWeight: 15, prerequisites: [4],
     quiz: { id: 'q5', questions: 6 }
@@ -106,7 +106,7 @@ const CourseDataMap = new Map([
     desc: 'اتقان الطباعة الاحترافية، التنقل السريع باستخدام Go To Special، وخفايا البحث المتقدم.', 
     story: 'استعد لمحاضرة مليئة بالخدع السحرية! هل تعاني من طباعة الجداول وتنسيقها؟ سنقضي على هذه المشكلة تماماً ونجعلك تطبع أي ملف باحترافية تامة مع ضبط الرأس والتذييل. سنتعلم أيضاً كيف "نطير" داخل الإكسل ونصل لأي معلومة مخفية بلمح البصر باستخدام "Go To Special". ولأن VLOOKUP هي العشق، سنعود إليها لنعزف معاً ألحاناً متقدمة ونكشف أسرارها العميقة!', 
     objectives: ['احتراف طباعة الملفات وتنسيق الرأس والتذييل (Header & Footer)', 'التنقل السريع والذكي واستكشاف خبايا أداة Go To Special', 'الغوص في الحالات المتقدمة والاحترافية لدالة VLOOKUP'], 
-    videoUrl: 'https://1drv.ms/v/c/a1a27fad04d192e9/IQRi-N0K7oBRQKvK1gQCuB14AdogNfQ2FV5znFGsJCpaazM', 
+    videoUrl: 'المحاضرة لم تتم بعد', 
     _filesCodes: ['F17', 'F18', 'F19', 'F20'],
     duration: 70, difficultyLevel: 'Intermediate', progressWeight: 10, prerequisites: [5],
     quiz: { id: 'q6', questions: 4 }
@@ -116,7 +116,7 @@ const CourseDataMap = new Map([
     desc: 'رحلة دمج معادلات FILTER و SORT و UNIQUE للوصول للجيل الجديد من البحث بـ XLOOKUP.', 
     story: 'استعدوا للصدمة الإيجابية! في هذه المحاضرة سنعيش رحلة جنونية مع المصفوفات الديناميكية؛ سندمج دوال مثل FILTER و UNIQUE و SORT و VSTACK معاً لتشكيل خلطة سحرية تستخرج أي نتيجة مهما كانت معقدة. وبعدها، سنودع الطرق التقليدية ونستقبل الملك المتوج "XLOOKUP"، لنفصص كل جزء فيه ونكتشف الفروقات الجوهرية التي تجعله البديل الأقوى والأكثر مرونة مقارنة بـ VLOOKUP. هذه المحاضرة ستغير طريقة عملك للأبد!', 
     objectives: ['استخراج البيانات وتصفيتها باحترافية باستخدام دالة FILTER', 'دمج المصفوفات الديناميكية (UNIQUE, SORT, CHOOSECOLS, VSTACK) في معادلة واحدة جبارة', 'فهم الفروقات الجوهرية واحتراف جميع خصائص دالة XLOOKUP السحرية'], 
-    videoUrl: 'https://1drv.ms/v/c/a1a27fad04d192e9/IQS8aDI7l06gQJbUzXiJMZtVAUheJApM9YYE-5aRmK9vsoA', 
+    videoUrl: 'المحاضرة لم تتم بعد', 
     _filesCodes: ['F21', 'F22'],
     duration: 85, difficultyLevel: 'Advanced', progressWeight: 15, prerequisites: [6],
     quiz: { id: 'q7', questions: 5 }
@@ -126,7 +126,7 @@ const CourseDataMap = new Map([
     desc: 'تسريع العمل بـ Flash Fill، إتقان دالة IF المتداخلة، التلاعب بالنصوص، والسر الأعظم INDEX و MATCH.', 
     story: 'جاهزون لجرعة مكثفة من أسرار المحترفين؟ سنبدأ بسحر خاصية Flash Fill التي ستنجز ساعات من العمل في ثانية واحدة وبطريقة مرتبة جداً! ثم سنبني منطقاً حديدياً بتداخل معادلات IF المتعددة لنعالج أعقد الحالات العملية. ولأن البيانات غالباً ما تأتي فوضوية، سنسيطر عليها تماماً باستخدام ترسانة من دوال النصوص القوية (مثل TEXTSPLIT و TRIM وغيرها). وأخيراً، سنكشف عن السلاح السري للمحللين المتقدمين: دمج معادلة INDEX مع MATCH للبحث بمرونة لا حدود لها!', 
     objectives: ['تسريع المهام الروتينية وتنظيف البيانات باستخدام الذكاء المدمج لخاصية Flash Fill', 'بناء شروط منطقية معقدة ومتداخلة باستخدام IF Statement لسيناريوهات العمل المختلفة', 'معالجة وتنظيف النصوص المعقدة باستخدام ترسانة الدوال (TRUNC, TRIM, TEXTSPLIT, etc.)', 'احتراف البحث المتقدم والبديل الأقوى لـ VLOOKUP باستخدام دمج INDEX و MATCH'], 
-    videoUrl: 'https://1drv.ms/v/c/a1a27fad04d192e9/IQQJTmLRfnJBSY0Sp9WX8A4YAe8u0_S9RA301a28r9177TM', 
+    videoUrl: 'المحاضرة لم تتم بعد', 
     _filesCodes: ['F23', 'F24', 'F25', 'F26'],
     duration: 100, difficultyLevel: 'Advanced', progressWeight: 15, prerequisites: [7],
     quiz: { id: 'q8', questions: 6 }
@@ -136,7 +136,7 @@ const CourseDataMap = new Map([
     desc: 'أسرار الشروط المتداخلة مع AND/OR/NOT، استهداف الأرقام بـ Goal Seek، تأمين الملفات، واحتراف SUMIFS و COUNTIFS.', 
     story: 'هل أنتم جاهزون لرفع مستوى التحدي؟ في هذه المحاضرة سنتلاعب بالشروط المعقدة بدمج دالة IF مع (AND, OR, NOT) لنحاكي أعقد سيناريوهات الواقع! وسنكتشف سحر "Goal Seek" لنجعل الإكسل يجد الرقم الذي نحلم به. لن ننسى حماية تعبنا، سنتعلم 3 مستويات لتشفير وحماية ملفاتنا لتصبح قلعة حصينة. وسنسلط الضوء على الأداة المظلومة "Quick Analysis" لسرعة خيالية في التحليل. وفي الختام، سنتوج مهاراتنا بعمالقة الإحصاء SUMIFS و COUNTIFS بأمثلة ذكية وتدريجية!', 
     objectives: ['دمج الشروط المنطقية المتقدمة (IF مع AND, OR, NOT)', 'تحقيق الأهداف الرقمية بضغطة زر عبر Goal Seek وتطبيق 3 مستويات من الحماية', 'استغلال أداة التحليل السريع واحتراف دوال التلخيص المشروطة SUMIFS و COUNTIFS'], 
-    videoUrl: 'https://1drv.ms/v/c/a1a27fad04d192e9/IQR1-TQBUP3bS5y1vI4r61DdAez-pz9Ix4A-XcpKXuaZsw8?width=1920&height=1080', 
+    videoUrl: 'المحاضرة لم تتم بعد', 
     _filesCodes: ['F27', 'F28', 'F29', 'F30', 'F31', 'F32'],
     duration: 120, difficultyLevel: 'Advanced', progressWeight: 15, prerequisites: [8],
     quiz: null
@@ -146,7 +146,7 @@ const CourseDataMap = new Map([
     desc: 'وداعاً للمعادلات المعقدة! اكتشف كل تفصيلة صغيرة وكبيرة في عالم الجداول المحورية.', 
     story: 'هنا تبدأ العظمة! في هذا الملف سنغوص في أعماق الـ Pivot Table لنكتشف الأشياء المجنونة التي يمكننا فعلها به. وداعاً لكتابة المعادلات المعقدة، فمن الآن وصاعداً، كل التلخيصات والتقارير ستنتهي بـ "كبسة زر" واحدة وبدقة متناهية. استعدوا لتغيير قواعد اللعبة في تحليل البيانات!', 
     objectives: ['إتقان إنشاء الجداول المحورية (Pivot Tables) وفهم كل خصائصها الدقيقة والمخفية', 'تلخيص كميات هائلة من البيانات بضغطة زر ودون الحاجة لأي معادلات', 'استخدام شرائح البيانات (Slicers) لفلترة التقارير بأسلوب ديناميكي واحترافي'], 
-    videoUrl: 'https://1drv.ms/v/c/a1a27fad04d192e9/IQQbv6Az5mcZRYQyQ1iKeCUeAVkIF1-8z77rvc4EWA269AA?width=1920&height=1080', 
+    videoUrl: 'المحاضرة لم تتم بعد', 
     _filesCodes: ['F33'],
     duration: 90, difficultyLevel: 'Advanced', progressWeight: 10, prerequisites: [9],
     quiz: null
@@ -156,7 +156,7 @@ const CourseDataMap = new Map([
     desc: 'التطبيق الشامل لكل ما تعلمناه! ربط الـ Slicers وتصميم لوحة تحكم تفاعلية متكاملة.', 
     story: 'لقد وصلنا إلى المحطة الأروع والأهم في مسيرتنا! مثلما استخدمنا السلايسر في الـ Pivot، سنتعلم هنا كيف نربطه مع الجداول العادية (Tables). والأهم من ذلك، سنبدأ بتنفيذ مشروعنا النهائي المنتظر: بناء داشبورد (Dashboard) احترافي، تفاعلي، ومذهل بصرياً من الصفر وحتى الإخراج النهائي. استخدموا الروابط المساعدة للون والخط لنصنع معاً تحفة فنية تلخص خبرتكم الكاملة!', 
     objectives: ['احتراف استخدام السلايسر (Slicers) مع الجداول العادية لفلترة البيانات فوراً', 'التخطيط الهندسي والتصميم البصري لبناء لوحة تحكم متكاملة باستخدام أفضل المواقع المساعدة', 'دمج جميع المهارات السابقة لإخراج تقرير نهائي (Dashboard) يبهر الإدارة'], 
-    videoUrl: 'https://1drv.ms/v/c/a1a27fad04d192e9/IQTs1LW4FswmQrT8wQSXLflIAVhxb_c9FqQ4_e8C01xuXEY?width=1920&height=1080', 
+    videoUrl: 'المحاضرة لم تتم بعد', 
     _filesCodes: ['F34', 'F35', 'F36', 'F37', 'F38', 'F39', 'F40'],
     duration: 180, difficultyLevel: 'Expert', progressWeight: 15, prerequisites: [10],
     quiz: null
