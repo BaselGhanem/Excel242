@@ -66,7 +66,7 @@ const CourseDataMap = new Map([
     desc: 'SUM، AVERAGE، COUNT وكيفية توظيفها في الحياة العملية.', 
     story: 'في هذه المحاضرة سننتقل من مجرد إدخال البيانات إلى جعل Excel يحسب نيابة عنك. سنتعلم أهم الدوال الأساسية التي لا غنى عنها في أي بيئة عمل.', 
     objectives: ['فهم الهيكل الصحيح لكتابة الصيغ', 'تطبيق دوال الجمع والمتوسط (SUM, AVERAGE)', 'استخدام دوال العد (COUNT) وتجنب الأخطاء'], 
-    videoUrl: 'المحاضرة لم تتم بعد', 
+    videoUrl: 'https://1drv.ms/v/c/a1a27fad04d192e9/IQRnp9awVpxiQIjYfWNtMw8gAVsO638QmrYp-a_aadZbVVo', 
     _filesCodes: ['F2', 'F3'],
     duration: 60, difficultyLevel: 'Beginner', progressWeight: 10, prerequisites: [1],
     quiz: { id: 'q2', questions: 5 }
