@@ -197,7 +197,7 @@ const objList = document.getElementById('objList');
 DATA.objectives.forEach(obj => { objList.innerHTML += `<li>${obj}</li>`; });
 
 // توليد الواجهة بناءً على البيانات
-if (DATA.videoUrl && DATA.videoUrl.trim() !== '') {
+if (DATA.videoUrl) {
   document.getElementById('availableView').style.display = 'block';
   document.getElementById('videoTarget').innerHTML = `
     <div id="videoLoader" class="video-loader">
