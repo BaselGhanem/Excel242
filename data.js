@@ -9,15 +9,15 @@
 const VideoRegistry = {
   1:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQQnivPtSWYAT6f2cV68amFaAXEZJ-JM-FzbbAHo4LV_wcE',
   2:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQRnp9awVpxiQIjYfWNtMw8gAVsO638QmrYp-a_aadZbVVo',
-  3:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQRnp9awVpxiQIjYfWNtMw8gAVsO638QmrYp-a_aadZbVVo', // ← ضع رابط الفيديو هنا بعد المحاضرة
-  4:  null,
-  5:  null,
-  6:  null,
-  7:  null,
-  8:  null,
-  9:  null,
-  10: null,
-  11: null,
+  3:  'https://assets.mixkit.co/videos/preview/mixkit-coming-soon-screen-with-glitch-effect-34304-large.mp4', 
+  4:  'https://assets.mixkit.co/videos/preview/mixkit-coming-soon-screen-with-glitch-effect-34304-large.mp4',
+  5:  'https://assets.mixkit.co/videos/preview/mixkit-coming-soon-screen-with-glitch-effect-34304-large.mp4',
+  6:  'https://assets.mixkit.co/videos/preview/mixkit-coming-soon-screen-with-glitch-effect-34304-large.mp4',
+  7:  'https://assets.mixkit.co/videos/preview/mixkit-coming-soon-screen-with-glitch-effect-34304-large.mp4',
+  8:  'https://assets.mixkit.co/videos/preview/mixkit-coming-soon-screen-with-glitch-effect-34304-large.mp4',
+  9:  'https://assets.mixkit.co/videos/preview/mixkit-coming-soon-screen-with-glitch-effect-34304-large.mp4',
+  10: 'https://assets.mixkit.co/videos/preview/mixkit-coming-soon-screen-with-glitch-effect-34304-large.mp4',
+  11: 'https://assets.mixkit.co/videos/preview/mixkit-coming-soon-screen-with-glitch-effect-34304-large.mp4',
 };
 
 /**
