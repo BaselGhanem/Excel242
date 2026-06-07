@@ -9,7 +9,7 @@
 const VideoRegistry = {
   1:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQQnivPtSWYAT6f2cV68amFaAXEZJ-JM-FzbbAHo4LV_wcE',
   2:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQRnp9awVpxiQIjYfWNtMw8gAVsO638QmrYp-a_aadZbVVo',
-  3:  null,  // ← ضع رابط الفيديو هنا بعد المحاضرة
+  3:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQRnp9awVpxiQIjYfWNtMw8gAVsO638QmrYp-a_aadZbVVo', // ← ضع رابط الفيديو هنا بعد المحاضرة
   4:  null,
   5:  null,
   6:  null,
