@@ -9,9 +9,9 @@
 const VideoRegistry = {
   1:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQQnivPtSWYAT6f2cV68amFaAXEZJ-JM-FzbbAHo4LV_wcE',
   2:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQRnp9awVpxiQIjYfWNtMw8gAVsO638QmrYp-a_aadZbVVo',
-  3:  'http://www.youtube.com/watch?v=-l0ZDlv0eVI', 
-  4:  'http://www.youtube.com/watch?v=-l0ZDlv0eVI',
-  5:  'http://www.youtube.com/watch?v=-l0ZDlv0eVI',
+  3:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQSDCVHpkemXRIzReo9m2R2WATJwRnzELd4upNZyjBRFcnM', 
+  4:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQS02ja1WKy9RLX_fUdPBKyJAQsCZ5udeh4C26y50WGJURU',
+  5:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQRy7xNJhcrNSLe2Lzc9d9HKAepqQSKviR_H4VelGnkh22k',
   6:  'http://www.youtube.com/watch?v=-l0ZDlv0eVI',
   7:  'http://www.youtube.com/watch?v=-l0ZDlv0eVI',
   8:  'http://www.youtube.com/watch?v=-l0ZDlv0eVI',
