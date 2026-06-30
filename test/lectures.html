@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">المحاضرة - Excel Pro</title>
+
+<script src="data.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#099999;--teal-light:#0bbdbd;--teal-dark:#077777;--teal-glow:rgba(9,153,153,.35);--teal-subtle:rgba(9,153,153,.08);--bg:#080c10;--bg-2:#0d1117;--bg-3:#111820;--surface:#141c25;--surface-2:#1a2433;--surface-3:#202d3e;--border:rgba(255,255,255,.07);--border-teal:rgba(9,153,153,.25);--text-primary:#f0f4f8;--text-secondary:#8fa3b8;--text-muted:#4a6075;--gold:#d4a843;--radius-sm:8px;--radius-md:16px;--radius-lg:24px;--transition:.35s cubic-bezier(.25,.46,.45,.94);--transition-fast:.18s ease;}[data-theme="light"]{--bg:#f0f4f8;--bg-2:#e8eef4;--bg-3:#dde5ee;--surface:#fff;--surface-2:#f5f8fb;--surface-3:#eaf0f6;--border:rgba(0,0,0,.08);--border-teal:rgba(9,153,153,.2);--text-primary:#0d1117;--text-secondary:#4a6075;--text-muted:#8fa3b8;}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{direction:rtl}body{font-family:'Almarai',sans-serif;background:var(--bg);color:var(--text-primary);min-height:100vh;transition:background .35s,color .35s;display:flex;flex-direction:column;}::selection{background:var(--teal);color:#fff}::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg-2)}::-webkit-scrollbar-thumb{background:var(--teal);border-radius:2px}a{text-decoration:none; color:inherit;}nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:70px;background:rgba(8,12,16,.9);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}[data-theme="light"] nav{background:rgba(240,244,248,.92)}.nav-logo{display:flex;align-items:center;gap:10px;color:var(--teal);font-weight:800;font-size:1.1rem}.logo-box{width:34px;height:34px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}.nav-right{display:flex;align-items:center;gap:12px}.icon-btn{width:40px;height:40px;border-radius:12px;border:1.5px solid var(--border);background:var(--surface);color:var(--text-secondary);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:var(--transition-fast)}.icon-btn:hover{border-color:var(--teal);color:var(--teal)}.back-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:50px;border:1.5px solid var(--border);background:var(--surface);color:var(--text-secondary);font-family:'Almarai',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;transition:var(--transition-fast)}.back-btn:hover{border-color:var(--teal);color:var(--teal)}.breadcrumb{padding:20px 48px 0;display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--text-muted)}.breadcrumb a{color:var(--teal);font-weight:700}.breadcrumb a:hover{text-decoration:underline}.soon-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 24px;text-align:center}.soon-card{max-width:600px;width:100%}.soon-icon-wrap{width:120px;height:120px;border-radius:30px;background:var(--teal-subtle);border:1px solid var(--border-teal);display:flex;align-items:center;justify-content:center;font-size:3.5rem;margin:0 auto 36px;position:relative}.soon-icon-wrap::after{content:'';position:absolute;inset:-20px;border-radius:40px;background:radial-gradient(circle,rgba(9,153,153,.06),transparent 70%)}.soon-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:50px;background:rgba(212,168,67,.08);border:1px solid rgba(212,168,67,.25);color:var(--gold);font-size:.82rem;font-weight:800;margin-bottom:28px}.soon-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}.placeholder-sections{display:flex;flex-direction:column;gap:16px;margin-bottom:40px;text-align:right}.ph-item{display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);opacity:.7}.ph-icon{font-size:1.3rem;flex-shrink:0}.ph-text strong{display:block;font-size:.9rem;font-weight:800}.ph-text span{font-size:.8rem;color:var(--text-muted)}.soon-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}.btn-back-main{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;font-size:.95rem;font-weight:800;border:none;cursor:pointer;transition:var(--transition)}.btn-back-main:hover{transform:translateY(-2px);box-shadow:0 8px 32px var(--teal-glow)}.progress-teaser{margin-top:40px;padding-top:32px;border-top:1px solid var(--border)}.pt-label{font-size:.8rem;color:var(--text-muted);font-weight:700;margin-bottom:12px}.pt-bar{background:var(--surface);border-radius:50px;height:8px;overflow:hidden;margin-bottom:10px}.pt-fill{height:100%;background:linear-gradient(90deg,var(--teal-dark),var(--teal-light));border-radius:50px;transition:width 1s ease}.pt-nums{font-size:.78rem;color:var(--text-muted);display:flex;justify-content:space-between}.lec-hero{padding:32px 48px 0;max-width:1300px;margin:0 auto; width: 100%;}.lec-meta{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}.lec-num-badge{padding:6px 16px;border-radius:50px;background:var(--teal-subtle);border:1px solid var(--border-teal);color:var(--teal);font-size:.8rem;font-weight:800}.lec-status-badge{padding:6px 16px;border-radius:50px;font-size:.8rem;font-weight:800}.status-available{background:rgba(9,153,153,.1);color:var(--teal);border:1px solid var(--border-teal)}.status-done{background:rgba(40,200,100,.1);color:#28c864;border:1px solid rgba(40,200,100,.25)}.shared-title{font-size:clamp(1.8rem,3.5vw,3rem);font-weight:800;margin-bottom:16px;line-height:1.2}.shared-desc{color:var(--text-secondary);font-size:1rem;font-weight:400;line-height:1.8;max-width:700px}.lec-layout{display:grid;grid-template-columns:1fr 360px;gap:32px;padding:32px 48px 64px;max-width:1300px;margin:0 auto;align-items:start; width: 100%;}.video-wrap{position:relative;border-radius:20px;overflow:hidden;background:var(--surface);border:1px solid var(--border);box-shadow:0 24px 80px rgba(0,0,0,.5);margin-bottom:28px}.video-wrap iframe{width:100%;aspect-ratio:16/9;display:block;border:none}.objectives-card, .story-card, .complete-card, .download-card, .nav-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;margin-bottom:24px}.obj-title, .story-head, .dl-title{font-size:1rem;font-weight:800;margin-bottom:20px;display:flex;align-items:center;gap:10px}.obj-list{list-style:none;display:flex;flex-direction:column;gap:12px}.obj-list li{display:flex;align-items:flex-start;gap:12px;font-size:.9rem;color:var(--text-secondary);font-weight:400;line-height:1.6}.obj-list li::before{content:'✓';color:var(--teal);font-weight:800;font-size:.9rem;margin-top:1px;flex-shrink:0}.story-body{font-size:.9rem;color:var(--text-secondary);line-height:1.9;font-weight:400}.lec-sidebar{display:flex;flex-direction:column;gap:20px;position:sticky;top:90px}.complete-card{border-color:var(--border-teal);text-align:center;position:relative;overflow:hidden}.complete-card::before{content:'';position:absolute;top:0;right:0;left:0;height:2px;background:linear-gradient(90deg,transparent,var(--teal),transparent)}.complete-icon{font-size:2.5rem;margin-bottom:16px;display:block}.complete-title{font-size:1rem;font-weight:800;margin-bottom:8px}.complete-desc{font-size:.82rem;color:var(--text-secondary);margin-bottom:24px;font-weight:400;line-height:1.7}.btn-complete{width:100%;padding:16px;border-radius:var(--radius-md);background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;font-family:'Almarai',sans-serif;font-size:.95rem;font-weight:800;border:none;cursor:pointer;transition:var(--transition)}.btn-complete:hover{transform:translateY(-2px);box-shadow:0 8px 32px var(--teal-glow)}.btn-complete.done{background:linear-gradient(135deg,#1a7a40,#28a960);cursor:default}.btn-complete.done:hover{transform:none;box-shadow:none}.nav-card-title{font-size:.88rem;font-weight:800;color:var(--text-muted);margin-bottom:16px}.next-lec-btn{width:100%;padding:14px;border-radius:var(--radius-md);background:var(--surface-2);border:1.5px solid var(--border);color:var(--text-primary);font-family:'Almarai',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:var(--transition);display:flex;align-items:center;justify-content:space-between}.next-lec-btn:hover{border-color:var(--border-teal);background:var(--teal-subtle);color:var(--teal)}.next-lec-btn.locked-next{opacity:.5;cursor:not-allowed}@keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}.confetti-piece{position:fixed;width:10px;height:10px;border-radius:2px;pointer-events:none;animation:confettiFall 3s ease-in forwards;z-index:9999}@media(max-width:900px){nav{padding:0 20px} .breadcrumb{padding:16px 20px 0} .lec-hero{padding:24px 20px 0} .lec-layout{grid-template-columns:1fr;padding:24px 20px 48px} .lec-sidebar{position:static}}
+
+.dl-file{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:var(--transition-fast);text-decoration:none;color:inherit; margin-bottom: 10px;}
+.dl-file:last-child{margin-bottom: 0;}
+.dl-file:hover{border-color:var(--border-teal);background:var(--teal-subtle)}
+.dl-icon{font-size:1.5rem;flex-shrink:0}
+.dl-info{flex:1}
+.dl-name{font-size:.88rem;font-weight:800;display:block}
+.dl-size{font-size:.75rem;color:var(--text-muted)}
+.dl-arrow{color:var(--teal);font-size:.9rem;font-weight:bold;}
+  /* تنسيقات التحميل للفيديو */
+.video-loader {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  z-index: 1;
+  color: var(--teal);
+  font-weight: 700;
+  gap: 12px;
+}
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-teal);
+  border-top-color: var(--teal);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.video-pending-card {
+  min-height: clamp(280px, 42vw, 560px);
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(22px, 5vw, 54px);
+  background:
+    radial-gradient(circle at 18% 20%, rgba(9,153,153,.26), transparent 34%),
+    radial-gradient(circle at 82% 76%, rgba(212,168,67,.16), transparent 32%),
+    linear-gradient(135deg, rgba(9,153,153,.08), rgba(255,255,255,.025));
+  position: relative;
+  overflow: hidden;
+  font-family: 'Almarai', sans-serif;
+}
+.video-pending-card::before,
+.video-pending-card::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.08);
+  pointer-events: none;
+}
+.video-pending-card::before {
+  width: 240px;
+  height: 240px;
+  top: -80px;
+  right: -70px;
+  animation: floatSoft 6s ease-in-out infinite;
+}
+.video-pending-card::after {
+  width: 150px;
+  height: 150px;
+  left: -42px;
+  bottom: -42px;
+  animation: floatSoft 7s ease-in-out infinite reverse;
+}
+.video-pending-inner {
+  width: min(620px, 100%);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  animation: pendingEnter .75s cubic-bezier(.2,.8,.2,1) both;
+}
+.video-pending-icon {
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 28px;
+  background: rgba(9,153,153,.12);
+  border: 1px solid var(--border-teal);
+  box-shadow: 0 18px 45px rgba(9,153,153,.14);
+  font-size: 2.5rem;
+  animation: breathe 2.8s ease-in-out infinite;
+}
+.video-pending-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  background: rgba(212,168,67,.1);
+  color: var(--gold);
+  border: 1px solid rgba(212,168,67,.26);
+  font-size: .82rem;
+  font-weight: 800;
+}
+.video-pending-title {
+  font-size: clamp(1.35rem, 2.8vw, 2.15rem);
+  font-weight: 800;
+  line-height: 1.45;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+.video-pending-copy {
+  color: var(--text-secondary);
+  font-size: .98rem;
+  line-height: 1.9;
+  max-width: 470px;
+  margin: 0 auto;
+}
+.pending-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--gold);
+  box-shadow: 0 0 0 rgba(212,168,67,.5);
+  animation: pendingPulse 1.8s infinite;
+}
+@keyframes pendingEnter { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes breathe { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-6px) scale(1.03); } }
+@keyframes floatSoft { 0%, 100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(14px,-12px,0); } }
+@keyframes pendingPulse { 0% { box-shadow: 0 0 0 0 rgba(212,168,67,.48); } 70% { box-shadow: 0 0 0 10px rgba(212,168,67,0); } 100% { box-shadow: 0 0 0 0 rgba(212,168,67,0); } }
+.btn-complete.disabled-video {
+  opacity: .55;
+  cursor: not-allowed;
+  filter: grayscale(.35);
+}
+.btn-complete.disabled-video:hover {
+  transform: none;
+  box-shadow: none;
+}
+.status-pending-video {
+  background: rgba(212,168,67,.1);
+  color: var(--gold);
+  border: 1px solid rgba(212,168,67,.28);
+}
+
+/* تنسيق زر التحميل للملفات */
+.dl-action-btn {
+  background: var(--teal);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+.dl-file:hover .dl-action-btn {
+  background: var(--teal-dark);
+}
+</style>
+<link rel="stylesheet" href="premium.css?v=20260630">
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><div class="logo-box">X</div><span>Excel Pro</span></div>
+  <div class="nav-right">
+    <a href="dashboard.html" class="back-btn">← لوحة التحكم</a>
+    <button class="icon-btn" id="themeToggle" type="button" aria-label="تغيير المظهر">🌙</button>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="dashboard.html">الدورة</a> <span>/</span> <span class="sync-breadcrumb"></span>
+</div>
+
+<div class="soon-wrap" id="soonView" style="display:none;">
+  <div class="soon-card">
+    <div class="soon-icon-wrap">🧮</div>
+    <div class="soon-badge"><span class="dot"></span>قيد الإعداد</div>
+    <h1 class="shared-title sync-title"></h1>
+    <p class="shared-desc sync-desc" style="margin: 0 auto 40px;"></p>
+    <div class="placeholder-sections">
+      <div class="ph-item"><span class="ph-icon">🎬</span><div class="ph-text"><strong>الفيديو التعليمي</strong><span>سيتم إضافة الفيديو قريباً</span></div></div>
+      <div class="ph-item"><span class="ph-icon">📁</span><div class="ph-text"><strong>ملفات التطبيق</strong><span>ملفات Excel للتدريب قيد الإعداد</span></div></div>
+    </div>
+    <div class="soon-actions">
+      <a href="dashboard.html" class="btn-back-main">العودة للوحة التحكم</a>
+    </div>
+    <div class="progress-teaser">
+      <div class="pt-label">تقدمك في الدورة</div>
+      <div class="pt-bar"><div class="pt-fill" id="ptFill" style="width:0%"></div></div>
+      <div class="pt-nums"><span id="ptDone">0 مكتملة</span><span></span></div>
+    </div>
+  </div>
+</div>
+
+<div id="availableView" style="display:none; width:100%;">
+  <div class="lec-hero">
+    <div class="lec-meta">
+      <span class="lec-num-badge sync-badge"></span>
+      <span class="lec-status-badge status-available" id="statusBadge">▶ متاحة</span>
+    </div>
+    <h1 class="shared-title sync-title"></h1>
+    <p class="shared-desc sync-desc"></p>
+  </div>
+  <div class="lec-layout">
+    
+    <div class="video-section">
+      <div class="video-wrap" id="videoTarget"></div>
+      <div class="story-card" style="margin-bottom:24px">
+        <div class="story-head"><span>📖</span> عن هذه المحاضرة</div>
+        <div class="story-body" id="storyBody"></div>
+      </div>
+      <div class="objectives-card">
+        <div class="obj-title"><span>🎯</span> أهداف المحاضرة</div>
+        <ul class="obj-list" id="objList"></ul>
+      </div>
+    </div>
+    
+    <div class="lec-sidebar">
+      
+      <div class="complete-card">
+        <span class="complete-icon" id="completeIcon">🎓</span>
+        <div class="complete-title" id="completeTitle">أكملت المحاضرة؟</div>
+        <div class="complete-desc" id="completeDesc">سجل إتمامك لفتح المحاضرة التالية.</div>
+        <button class="btn-complete" id="completeBtn" onclick="markComplete()">
+          <span id="completeBtnText">✓ تمت المشاهدة - سجّل إتمامي</span>
+        </button>
+      </div>
+      
+      <div class="download-card">
+        <div class="dl-title"><span>📁</span> ملفات المحاضرة</div>
+        <div id="fileTarget"></div> <div class="soon-badge" id="fileSoonTag" style="width:100%; justify-content:center; margin-bottom:0; display:flex;">
+          <span>⏳</span> لا يوجد ملف مرفق حالياً
+        </div>
+      </div>
+      
+<div class="nav-card">
+        <div class="nav-card-title">التنقل بين المحاضرات</div>
+        <div id="lockHint" style="display:none; color: var(--gold); font-size: 0.8rem; margin-bottom: 12px; font-weight: bold;">
+          🔒 يجب النقر على "سجّل إتمامي" لفتح المحاضرة التالية
+        </div>
+        <button class="next-lec-btn locked-next" id="nextBtn" type="button" onclick="goNext()">
+          <span class="sync-next-text"></span>
+          <span id="nextIcon">🔒</span>
+        </button>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<script>
+// ==========================================
+// 1. الاستخراج الذكي من الرابط (URL Parameters)
+// ==========================================
+const urlParams = new URLSearchParams(window.location.search);
+let CURRENT_LEC_ID = parseInt(urlParams.get('id')) || 1;
+
+const NEXT_ID = CURRENT_LEC_ID + 1;
+const TOTAL_LESSONS = CourseService.getAllLessons().length;
+
+// ==========================================
+// 2. جلب البيانات من الطبقة الخدمية
+// ==========================================
+const DATA = CourseService.getLesson(CURRENT_LEC_ID);
+
+if (!DATA) {
+  document.body.innerHTML = `
+    <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; text-align:center;">
+        <h1 style="color:var(--teal); font-size:4rem; margin-bottom:10px;">404</h1>
+        <h2 style="color:white;">المحاضرة رقم ${CURRENT_LEC_ID} غير موجودة!</h2>
+        <a href="dashboard.html" class="btn-back-main" style="margin-top:20px; text-decoration:none;">العودة للوحة التحكم</a>
+    </div>`;
+  throw new Error("Lesson not found");
+}
+
+// تهيئة نظام تجربة المستخدم
+const userEmail = localStorage.getItem('excelPro_user') || 'guest';
+const currentUser = new UserExperienceLogic(userEmail);
+currentUser.viewLesson(CURRENT_LEC_ID);
+
+// ==========================================
+// 3. حقن البيانات في واجهة المستخدم (UI Binding)
+// ==========================================
+document.getElementById('pageTitle').textContent = `المحاضرة ${CURRENT_LEC_ID} - Excel Pro`;
+document.querySelector('.sync-breadcrumb').textContent = `المحاضرة ${CURRENT_LEC_ID}`;
+document.querySelector('.sync-badge').textContent = `المحاضرة ${CURRENT_LEC_ID} من ${TOTAL_LESSONS}`; 
+document.querySelector('.sync-next-text').textContent = NEXT_ID <= TOTAL_LESSONS ? `المحاضرة ${NEXT_ID}` : 'نهاية الدورة';
+
+document.querySelectorAll('.sync-title').forEach(el => el.textContent = DATA.title);
+document.querySelectorAll('.sync-desc').forEach(el => el.textContent = DATA.desc);
+document.getElementById('storyBody').innerHTML = `<p>${DATA.story}</p>`;
+
+const objList = document.getElementById('objList');
+DATA.objectives.forEach(obj => { objList.innerHTML += `<li>${obj}</li>`; });
+
+// توليد الواجهة بناءً على البيانات
+const isVideoPending = DATA.videoStatus === 'pending';
+const hasPlayableVideo = Boolean(DATA.videoUrl && DATA.videoUrl.trim() !== '' && !isVideoPending);
+
+function renderFiles() {
+  if (DATA.files && DATA.files.length > 0) {
+    let filesHTML = '';
+    DATA.files.forEach(file => {
+      const icon = file.category === 'PDF' ? '📕' : (file.category === 'Assignments' ? '📝' : '📊');
+      filesHTML += `
+      <a class="dl-file" href="${file.url}" target="_blank" title="تنزيل ${file.name}" onclick="AnalyticsService.recordFileDownload('${file.code}')">
+        <span class="dl-icon">${icon}</span>
+        <div class="dl-info">
+          <span class="dl-name">${file.name}</span>
+          <span class="dl-size">${file.category} • ${file.fileSize || 'ملف عمل'}</span>
+        </div>
+        <div class="dl-action-btn">تحميل ⬇</div>
+      </a>`;
+    });
+    document.getElementById('fileTarget').innerHTML = filesHTML;
+    document.getElementById('fileTarget').style.display = 'block';
+    document.getElementById('fileSoonTag').style.display = 'none';
+  } else {
+    document.getElementById('fileTarget').style.display = 'none';
+    document.getElementById('fileSoonTag').style.display = 'flex';
+  }
+}
+
+if (hasPlayableVideo || isVideoPending) {
+  document.getElementById('availableView').style.display = 'block';
+
+  if (hasPlayableVideo) {
+    document.getElementById('videoTarget').innerHTML = `
+      <div id="videoLoader" class="video-loader">
+        <div class="spinner"></div>
+        <span>جاري تحميل الفيديو...</span>
+      </div>
+      <iframe src="${DATA.videoUrl}" width="100%" style="aspect-ratio: 16/9; position: relative; z-index: 2;" frameborder="0" allowfullscreen onload="document.getElementById('videoLoader').style.display='none'"></iframe>
+    `;
+  } else {
+    document.getElementById('statusBadge').className = 'lec-status-badge status-pending-video';
+    document.getElementById('statusBadge').textContent = '⏳ قيد الرفع';
+    document.getElementById('videoTarget').innerHTML = `
+      <div class="video-pending-card" role="status" aria-live="polite">
+        <div class="video-pending-inner">
+          <div class="video-pending-icon">🎬</div>
+          <div class="video-pending-pill"><span class="pending-dot"></span>الفيديو غير متاح حالياً</div>
+          <div class="video-pending-title">${DATA.videoMessage || 'عذراً، لم يتم رفع الفيديو إلى الآن.'}</div>
+          <p class="video-pending-copy">المحاضرة جاهزة ضمن الخطة، وسيظهر الفيديو هنا مباشرة بعد رفعه واعتماده.</p>
+        </div>
+      </div>
+    `;
+  }
+
+  renderFiles();
+} else {
+  document.getElementById('soonView').style.display = 'flex';
+}
+
+// ==========================================
+// 4. نظام المصادقة والتقدم (Progress & Auth)
+// ==========================================
+if (!localStorage.getItem('excelPro_user')) location.href = 'login.html';
+const role = localStorage.getItem('excelPro_role');
+
+function getProgress() {
+  const raw = localStorage.getItem('excelPro_progress');
+  let progress = { completed: [], locked: role === 'admin' ? [] : Array.from({length: TOTAL_LESSONS - 1}, (_, i) => i + 2) };
+  
+  if (raw) {
+      try {
+          const parsed = JSON.parse(raw);
+          // الحماية من البيانات القديمة التي تسبب الشاشة البيضاء
+          progress.completed = parsed.completed || [];
+          progress.locked = parsed.locked || progress.locked;
+      } catch(e) {}
+  }
+  
+  if(currentUser && currentUser.userData) {
+      currentUser.userData.completedLessons = progress.completed;
+  }
+  return progress;
+}
+
+function saveProgress(p) { localStorage.setItem('excelPro_progress', JSON.stringify(p)); }
+
+const pData = getProgress();
+const currentProgressPercent = LearningEngine.calculateCourseProgress(pData.completed);
+document.getElementById('ptFill').style.width = currentProgressPercent + '%';
+document.getElementById('ptDone').textContent = `${pData.completed.length} مكتملة`;
+document.querySelectorAll('.pt-nums span:last-child').forEach(el => el.textContent = `من ${TOTAL_LESSONS} محاضرات`);
+
+function updateUI() {
+  const progress = getProgress();
+  const isDone = progress.completed.includes(CURRENT_LEC_ID);
+  const isNextLocked = role !== 'admin' && progress.locked.includes(NEXT_ID);
+
+  if (isVideoPending) {
+    document.getElementById('completeIcon').textContent = '⏳';
+    document.getElementById('completeTitle').textContent = 'الفيديو لم يُرفع بعد';
+    document.getElementById('completeDesc').textContent = 'سيتم تفعيل تسجيل الإتمام بعد رفع الفيديو.';
+    const btn = document.getElementById('completeBtn');
+    btn.classList.add('disabled-video');
+    btn.disabled = true;
+    document.getElementById('completeBtnText').textContent = 'غير متاح حالياً';
+    return;
+  }
+
+  if (isDone && DATA.videoUrl) {
+    document.getElementById('completeIcon').textContent = '✅';
+    document.getElementById('completeTitle').textContent = 'أحسنت! المحاضرة مكتملة';
+    document.getElementById('completeDesc').textContent = 'لقد أتممت هذه المحاضرة بنجاح. يمكنك مراجعتها في أي وقت.';
+    const btn = document.getElementById('completeBtn');
+    btn.classList.add('done');
+    document.getElementById('completeBtnText').textContent = '✓ تمت بنجاح';
+    document.getElementById('statusBadge').className = 'lec-status-badge status-done';
+    document.getElementById('statusBadge').textContent = '✓ مكتملة';
+  }
+  
+  const nextBtn = document.getElementById('nextBtn');
+  const lockHint = document.getElementById('lockHint');
+  const nextIcon = document.getElementById('nextIcon');
+
+  if(NEXT_ID > TOTAL_LESSONS) {
+      nextBtn.classList.add('locked-next');
+      nextBtn.style.opacity = '0.5';
+      nextBtn.style.cursor = 'default';
+      nextIcon.textContent = '⛔';
+      lockHint.style.display = 'none';
+  } else if (!isNextLocked || isDone) { 
+      nextBtn.classList.remove('locked-next'); 
+      nextIcon.textContent = '←';
+      lockHint.style.display = 'none';
+  } else {
+      nextBtn.classList.add('locked-next');
+      nextIcon.textContent = '🔒';
+      lockHint.style.display = 'block';
+  }
+} // <--- القوس المفقود تم إضافته هنا بشكل قاطع
+
+function markComplete() {
+  const progress = getProgress();
+  if (progress.completed.includes(CURRENT_LEC_ID)) return;
+  
+  progress.completed.push(CURRENT_LEC_ID);
+  progress.locked = progress.locked.filter(id => id !== NEXT_ID);
+  saveProgress(progress);
+  
+  launchConfetti(); 
+  updateUI();
+  if (window.premiumToast) premiumToast('تم تسجيل المحاضرة كمكتملة', 'تم فتح المحاضرة التالية إذا كانت متاحة.');
+}
+
+function goNext() {
+  if(NEXT_ID > TOTAL_LESSONS) return; 
+  
+  const progress = getProgress();
+  if (role !== 'admin' && progress.locked.includes(NEXT_ID) && !progress.completed.includes(CURRENT_LEC_ID)) {
+    if (window.premiumToast) premiumToast('المحاضرة التالية مقفلة', 'أكمل هذه المحاضرة أولاً لفتح المحاضرة التالية.');
+    else alert('أكمل هذه المحاضرة أولاً لفتح المحاضرة التالية.');
+    return;
+  }
+  location.href = `lectures.html?id=${NEXT_ID}`;
+}
+
+function launchConfetti() {
+  const colors = ['#099999','#0bbdbd','#d4a843','#28c864','#f0f4f8'];
+  for (let i = 0; i < 60; i++) {
+    const piece = document.createElement('div'); piece.className = 'confetti-piece';
+    piece.style.cssText = `left:${Math.random()*100}vw;top:-20px;background:${colors[Math.floor(Math.random()*colors.length)]};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;animation-delay:${Math.random()*1}s;animation-duration:${2+Math.random()*2}s`;
+    document.body.appendChild(piece); setTimeout(() => piece.remove(), 4000);
+  }
+}
+
+const themeToggle = document.getElementById('themeToggle');
+let dark = true;
+themeToggle.addEventListener('click', () => {
+  dark = !dark; document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  themeToggle.textContent = dark ? '🌙' : '☀️';
+});
+
+updateUI();
+</script>
+<script src="premium.js?v=20260630"></script>
+</body>
+</html>

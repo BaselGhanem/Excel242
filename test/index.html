@@ -1,1 +1,257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excel #242 | بوابة الدورة - باسل غانم</title>
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#099999;--teal-light:#0bbdbd;--teal-dark:#077777;
+  --teal-glow:rgba(9,153,153,.35);--teal-subtle:rgba(9,153,153,.08);
+  --bg:#080c10;--bg-2:#0d1117;--surface:#141c25;--surface-2:#1a2433;
+  --border:rgba(255,255,255,.07);--border-teal:rgba(9,153,153,.25);
+  --text-primary:#f0f4f8;--text-secondary:#8fa3b8;--text-muted:#4a6075;
+  --gold:#d4a843;--teams:#6264a7;--teams-light:#7b83eb;
+  --radius-lg:24px;--radius-md:16px;--radius-sm:10px;
+  --transition:.35s cubic-bezier(.25,.46,.45,.94);
+}
+[data-theme="light"]{
+  --bg:#f0f4f8;--bg-2:#e8eef4;--surface:#fff;--surface-2:#f5f8fb;
+  --border:rgba(0,0,0,.08);--border-teal:rgba(9,153,153,.2);
+  --text-primary:#0d1117;--text-secondary:#4a6075;--text-muted:#8fa3b8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{direction:rtl}
+body{font-family:'Almarai',sans-serif;background:var(--bg);color:var(--text-primary);min-height:100vh;overflow-x:hidden;transition:background .35s,color .35s}
+::selection{background:var(--teal);color:#fff}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--teal);border-radius:2px}
 
+.bg-grid{position:fixed;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:.4;mask-image:radial-gradient(ellipse 80% 80% at center,black 10%,transparent 70%);pointer-events:none;z-index:0}
+.orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb-1{width:600px;height:600px;background:var(--teal);opacity:.05;top:-200px;right:-150px;animation:float1 12s ease-in-out infinite}
+.orb-2{width:500px;height:500px;background:var(--teams);opacity:.04;bottom:-150px;left:-100px;animation:float2 15s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,20px)}}
+@keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,30px)}}
+
+nav{position:fixed;top:0;right:0;left:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:66px;background:rgba(8,12,16,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+[data-theme="light"] nav{background:rgba(240,244,248,.85)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem;color:var(--teal)}
+.logo-box{width:36px;height:36px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-radius:10px;display:grid;place-items:center;font-size:.95rem;font-weight:800;color:#fff;flex-shrink:0}
+.nav-right{display:flex;align-items:center;gap:10px}
+.theme-btn{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);color:var(--text-secondary);cursor:pointer;display:grid;place-items:center;font-size:.95rem;transition:var(--transition)}
+.theme-btn:hover{border-color:var(--teal);color:var(--teal)}
+.nav-badge{padding:6px 14px;border-radius:20px;background:rgba(9,153,153,.1);border:1px solid var(--border-teal);color:var(--teal);font-size:.78rem;font-weight:700}
+
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 24px 60px;text-align:center;gap:16px}
+
+.live-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:30px;background:rgba(9,153,153,.08);border:1px solid var(--border-teal);color:var(--teal);font-size:.82rem;font-weight:700;animation:fadeDown .6s both}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulseAnim 2s infinite}
+@keyframes pulseAnim{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+.hero h1{font-size:clamp(1.9rem,5.5vw,3.6rem);font-weight:800;line-height:1.2;animation:fadeDown .7s .1s both}
+.hero h1 span{color:var(--teal)}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero-sub{font-size:1rem;color:var(--text-secondary);max-width:520px;line-height:1.8;animation:fadeDown .7s .2s both}
+
+/* TEAMS CARD */
+.live-banner{width:100%;max-width:660px;animation:fadeUp .8s .3s both}
+.live-card{display:block;position:relative;background:linear-gradient(135deg,rgba(98,100,167,.12),rgba(123,131,235,.06));border:1.5px solid rgba(98,100,167,.3);border-radius:var(--radius-lg);padding:28px 32px;overflow:hidden;cursor:pointer;transition:var(--transition);text-decoration:none}
+.live-card:hover{transform:translateY(-4px);border-color:rgba(98,100,167,.55);box-shadow:0 20px 60px rgba(98,100,167,.18)}
+.live-card::before{content:'';position:absolute;top:0;right:0;left:0;height:2px;background:linear-gradient(90deg,transparent,var(--teams-light),transparent)}
+.live-inner{display:flex;align-items:center;gap:22px}
+.teams-icon-box{width:60px;height:60px;background:linear-gradient(135deg,var(--teams),var(--teams-light));border-radius:16px;display:grid;place-items:center;flex-shrink:0;box-shadow:0 8px 28px rgba(98,100,167,.35);font-size:1.7rem}
+.live-text{flex:1;text-align:right}
+.live-text h2{font-size:1.15rem;font-weight:800;margin-bottom:4px}
+.live-text p{font-size:.85rem;color:var(--text-secondary);margin-bottom:10px}
+.live-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;background:rgba(98,100,167,.15);border:1px solid rgba(98,100,167,.3);font-size:.76rem;font-weight:700;color:var(--teams-light)}
+.live-arr{font-size:1.4rem;color:var(--teams-light);flex-shrink:0;transition:transform var(--transition)}
+.live-card:hover .live-arr{transform:translateX(-6px)}
+
+/* PORTAL */
+.portal-wrap{width:100%;max-width:660px;animation:fadeUp .8s .45s both}
+.portal-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;position:relative;overflow:hidden}
+.portal-card::before{content:'';position:absolute;top:0;right:0;left:0;height:2px;background:linear-gradient(90deg,transparent,var(--teal),transparent)}
+.p-header{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.p-icon{width:50px;height:50px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-radius:14px;display:grid;place-items:center;font-size:1.35rem;box-shadow:0 6px 20px var(--teal-glow);flex-shrink:0}
+.p-title{font-size:1.1rem;font-weight:800;margin-bottom:4px}
+.p-sub{font-size:.84rem;color:var(--text-secondary)}
+
+.creds{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.cred{background:var(--surface-2);border:1.5px solid var(--border);border-radius:var(--radius-md);padding:14px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:var(--transition);position:relative;overflow:hidden;user-select:none}
+.cred:hover{border-color:var(--border-teal);background:var(--teal-subtle)}
+.cred:active{transform:scale(.98)}
+.cred-ico{font-size:1.3rem;flex-shrink:0}
+.cred-lbl{font-size:.73rem;color:var(--text-muted);font-weight:700;margin-bottom:3px;letter-spacing:.04em}
+.cred-val{font-size:.95rem;font-weight:800}
+.cred-val.pw{color:var(--teal);font-size:1.05rem;letter-spacing:.04em}
+.cred-tag{font-size:.68rem;color:var(--teal);background:rgba(9,153,153,.1);border:1px solid var(--border-teal);border-radius:10px;padding:2px 7px;position:absolute;left:12px;top:12px;opacity:0;transition:var(--transition)}
+.cred:hover .cred-tag{opacity:1}
+
+.hint-box{display:flex;align-items:center;gap:8px;background:rgba(9,153,153,.06);border:1px solid var(--border-teal);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:20px;font-size:.82rem;color:var(--text-secondary)}
+.hint-box strong{color:var(--teal)}
+
+.btn-enter{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px;border-radius:var(--radius-md);background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;font-family:'Almarai',sans-serif;font-size:1rem;font-weight:800;border:none;cursor:pointer;text-decoration:none;transition:var(--transition);position:relative;overflow:hidden}
+.btn-enter:hover{transform:translateY(-2px);box-shadow:0 10px 36px var(--teal-glow)}
+.btn-enter:active{transform:translateY(0)}
+.btn-arr{transition:transform var(--transition)}
+.btn-enter:hover .btn-arr{transform:translateX(-5px)}
+
+/* STATS */
+.stats{width:100%;max-width:660px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;animation:fadeUp .8s .6s both}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px;text-align:center}
+.stat-n{font-size:1.5rem;font-weight:800;color:var(--teal);margin-bottom:3px}
+.stat-l{font-size:.75rem;color:var(--text-muted);font-weight:700}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--surface);border:1px solid var(--border-teal);border-radius:30px;padding:11px 22px;font-size:.86rem;font-weight:700;color:var(--teal);box-shadow:0 6px 28px rgba(0,0,0,.25);opacity:0;transition:all .3s;z-index:9999;white-space:nowrap;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:580px){
+  nav{padding:0 18px}
+  .logo-label{display:none}
+  .creds{grid-template-columns:1fr}
+  .live-inner{flex-direction:column;text-align:center}
+  .live-text{text-align:center}
+  .live-arr{display:none}
+  .portal-card{padding:22px 18px}
+  .stats{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+<link rel="stylesheet" href="premium.css?v=20260630">
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<nav>
+  <div class="logo">
+    <div class="logo-box">X</div>
+    <span class="logo-label">Excel Pro — باسل غانم</span>
+  </div>
+  <div class="nav-right">
+    <span class="nav-badge">الدورة #242</span>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="تغيير المظهر">🌙</button>
+  </div>
+</nav>
+
+<div class="hero">
+
+  <div class="live-pill">
+    <span class="pulse"></span>
+    بوابة دخول الدورة
+  </div>
+
+  <h1>أهلاً بك في دورة<br><span>Excel</span> الاحترافية <em>#242</em></h1>
+  <p class="hero-sub">انضم للجلسة المباشرة مباشرةً، أو ادخل لمشاهدة التسجيلات والملفات</p>
+
+  <!-- TEAMS -->
+  <div class="live-banner">
+    <a class="live-card" href="https://teams.microsoft.com/meet/3656075812655?p=hq89erH4RkZDetsWOR" target="_blank" rel="noopener">
+      <div class="live-inner">
+        <div class="teams-icon-box">🟣</div>
+        <div class="live-text">
+          <h2>انضم إلى الجلسة المباشرة</h2>
+          <p>Microsoft Teams — Excel #242 | Live Session</p>
+          <span class="live-chip">⚡ ادخل الآن بدون تسجيل</span>
+        </div>
+        <span class="live-arr">←</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- PORTAL -->
+  <div class="portal-wrap">
+    <div class="portal-card">
+      <div class="p-header">
+        <div class="p-icon">🎬</div>
+        <div>
+          <div class="p-title">التسجيلات والملفات</div>
+          <div class="p-sub">11 محاضرة مسجلة + 40 ملف تدريبي</div>
+        </div>
+      </div>
+
+      <div class="creds">
+        <div class="cred" onclick="copyVal('أي اسم', this)">
+          <span class="cred-ico">👤</span>
+          <div>
+            <div class="cred-lbl">اسم المستخدم</div>
+            <div class="cred-val">أي اسم تريده</div>
+          </div>
+          <span class="cred-tag">نسخ</span>
+        </div>
+        <div class="cred" onclick="copyVal('Excel', this)">
+          <span class="cred-ico">🔑</span>
+          <div>
+            <div class="cred-lbl">كلمة المرور</div>
+            <div class="cred-val pw">Excel</div>
+          </div>
+          <span class="cred-tag">نسخ ✓</span>
+        </div>
+      </div>
+
+      <div class="hint-box">
+        💡 اكتب أي اسم في خانة المستخدم — كلمة المرور هي <strong>&nbsp;Excel&nbsp;</strong> فقط
+      </div>
+
+      <a class="btn-enter" href="login.html">
+        ادخل إلى التسجيلات والملفات
+        <span class="btn-arr">←</span>
+      </a>
+
+      <div id="returnLink"></div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><div class="stat-n">11</div><div class="stat-l">محاضرة مسجلة</div></div>
+    <div class="stat"><div class="stat-n">40+</div><div class="stat-l">ملف تدريبي</div></div>
+    <div class="stat"><div class="stat-n" style="color:var(--gold)">Live</div><div class="stat-l">جلسات مباشرة</div></div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast">✓ تم النسخ!</div>
+
+<script>
+// Theme
+const btn = document.getElementById('themeBtn');
+let dark = true;
+btn.addEventListener('click', () => {
+  dark = !dark;
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  btn.textContent = dark ? '🌙' : '☀️';
+});
+
+// Copy
+function copyVal(text, el) {
+  navigator.clipboard.writeText(text).then(() => { if (window.premiumToast) premiumToast('تم النسخ', text === 'Excel' ? 'تم نسخ كلمة المرور.' : 'تم نسخ النص.'); }).catch(() => {});
+  el.style.borderColor = 'var(--teal)';
+  el.style.background = 'rgba(9,153,153,.1)';
+  setTimeout(() => { el.style.borderColor = ''; el.style.background = ''; }, 800);
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => toast.classList.remove('show'), 1800);
+}
+
+// Return link if already logged in
+const user = localStorage.getItem('excelPro_user');
+if (user) {
+  const div = document.getElementById('returnLink');
+  const link = document.createElement('a');
+  link.href = 'dashboard.html';
+  link.className = 'return-dashboard-link';
+  link.style.cssText = 'display:flex;align-items:center;justify-content:center;gap:6px;margin-top:14px;color:var(--teal);font-size:.86rem;font-weight:700;text-decoration:none;opacity:.9';
+  link.textContent = `↩ العودة لداشبورد دورتك (${user})`;
+  div.appendChild(link);
+}
+</script>
+<script src="premium.js?v=20260630"></script>
+</body>
+</html>
