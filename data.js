@@ -2,10 +2,13 @@
  * ==========================================
  * 0. VIDEO REGISTRY — هنا فقط تضيف/تعدل الفيديوهات
  * ==========================================
- * بعد كل محاضرة: ضع رابط OneDrive مكان null
- * مثال: 3: 'https://1drv.ms/v/...',
+ * بعد كل محاضرة: ضع رابط OneDrive مكان VIDEO_NOT_UPLOADED
+ * مثال فيديو مرفوع: 3: 'https://1drv.ms/v/...',
+ * مثال فيديو غير مرفوع: 9: VIDEO_NOT_UPLOADED,
  * ==========================================
  */
+const VIDEO_NOT_UPLOADED = '__VIDEO_NOT_UPLOADED__';
+
 const VideoRegistry = {
   1:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQQnivPtSWYAT6f2cV68amFaAXEZJ-JM-FzbbAHo4LV_wcE',
   2:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQRnp9awVpxiQIjYfWNtMw8gAVsO638QmrYp-a_aadZbVVo',
@@ -15,9 +18,9 @@ const VideoRegistry = {
   6:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQTYrzfDJ2X9TIpvGdY-jZqKAeKs_Bmu_lUX_XtD-GLHwfg',
   7:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQSTbGYwxuWxRJsMB_-vQ9NcAU5Gzm0uXAJYeK6xK0amBl8',
   8:  'https://1drv.ms/v/c/a1a27fad04d192e9/IQTohYOF6DA0T4OoN1SBusToAambrhyDh3jY-wPcRXYwKwI',
-  9:  'http://www.youtube.com/watch?v=-l0ZDlv0eVI',
-  10: 'http://www.youtube.com/watch?v=-l0ZDlv0eVI',
-  11: 'http://www.youtube.com/watch?v=-l0ZDlv0eVI',
+  9:  VIDEO_NOT_UPLOADED,
+  10: VIDEO_NOT_UPLOADED,
+  11: VIDEO_NOT_UPLOADED,
 };
 
 /**
@@ -337,12 +340,15 @@ const CourseService = {
 
     // حقن الفيديو من VideoRegistry — لتحديث الفيديو: عدّل VideoRegistry فقط أعلى الملف
     const videoUrl = VideoRegistry[lessonId] ?? null;
+    const isVideoPending = videoUrl === VIDEO_NOT_UPLOADED;
 
     return {
       ...lesson,
       id: lessonId,
       files: filesDetailed,
-      videoUrl: videoUrl,
+      videoUrl: isVideoPending ? '' : videoUrl,
+      videoStatus: isVideoPending ? 'pending' : (videoUrl ? 'available' : 'missing'),
+      videoMessage: isVideoPending ? 'عذراً، لم يتم رفع الفيديو إلى الآن.' : '',
     };
   },
 

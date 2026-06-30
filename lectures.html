@@ -43,6 +43,117 @@
 }
 @keyframes spin { 100% { transform: rotate(360deg); } }
 
+.video-pending-card {
+  min-height: clamp(280px, 42vw, 560px);
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(22px, 5vw, 54px);
+  background:
+    radial-gradient(circle at 18% 20%, rgba(9,153,153,.26), transparent 34%),
+    radial-gradient(circle at 82% 76%, rgba(212,168,67,.16), transparent 32%),
+    linear-gradient(135deg, rgba(9,153,153,.08), rgba(255,255,255,.025));
+  position: relative;
+  overflow: hidden;
+  font-family: 'Almarai', sans-serif;
+}
+.video-pending-card::before,
+.video-pending-card::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.08);
+  pointer-events: none;
+}
+.video-pending-card::before {
+  width: 240px;
+  height: 240px;
+  top: -80px;
+  right: -70px;
+  animation: floatSoft 6s ease-in-out infinite;
+}
+.video-pending-card::after {
+  width: 150px;
+  height: 150px;
+  left: -42px;
+  bottom: -42px;
+  animation: floatSoft 7s ease-in-out infinite reverse;
+}
+.video-pending-inner {
+  width: min(620px, 100%);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  animation: pendingEnter .75s cubic-bezier(.2,.8,.2,1) both;
+}
+.video-pending-icon {
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 28px;
+  background: rgba(9,153,153,.12);
+  border: 1px solid var(--border-teal);
+  box-shadow: 0 18px 45px rgba(9,153,153,.14);
+  font-size: 2.5rem;
+  animation: breathe 2.8s ease-in-out infinite;
+}
+.video-pending-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  background: rgba(212,168,67,.1);
+  color: var(--gold);
+  border: 1px solid rgba(212,168,67,.26);
+  font-size: .82rem;
+  font-weight: 800;
+}
+.video-pending-title {
+  font-size: clamp(1.35rem, 2.8vw, 2.15rem);
+  font-weight: 800;
+  line-height: 1.45;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+.video-pending-copy {
+  color: var(--text-secondary);
+  font-size: .98rem;
+  line-height: 1.9;
+  max-width: 470px;
+  margin: 0 auto;
+}
+.pending-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--gold);
+  box-shadow: 0 0 0 rgba(212,168,67,.5);
+  animation: pendingPulse 1.8s infinite;
+}
+@keyframes pendingEnter { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes breathe { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-6px) scale(1.03); } }
+@keyframes floatSoft { 0%, 100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(14px,-12px,0); } }
+@keyframes pendingPulse { 0% { box-shadow: 0 0 0 0 rgba(212,168,67,.48); } 70% { box-shadow: 0 0 0 10px rgba(212,168,67,0); } 100% { box-shadow: 0 0 0 0 rgba(212,168,67,0); } }
+.btn-complete.disabled-video {
+  opacity: .55;
+  cursor: not-allowed;
+  filter: grayscale(.35);
+}
+.btn-complete.disabled-video:hover {
+  transform: none;
+  box-shadow: none;
+}
+.status-pending-video {
+  background: rgba(212,168,67,.1);
+  color: var(--gold);
+  border: 1px solid rgba(212,168,67,.28);
+}
+
 /* تنسيق زر التحميل للملفات */
 .dl-action-btn {
   background: var(--teal);
@@ -197,15 +308,10 @@ const objList = document.getElementById('objList');
 DATA.objectives.forEach(obj => { objList.innerHTML += `<li>${obj}</li>`; });
 
 // توليد الواجهة بناءً على البيانات
-if (DATA.videoUrl) {
-  document.getElementById('availableView').style.display = 'block';
-  document.getElementById('videoTarget').innerHTML = `
-    <div id="videoLoader" class="video-loader">
-      <div class="spinner"></div>
-      <span>جاري تحميل الفيديو...</span>
-    </div>
-    <iframe src="${DATA.videoUrl}" width="100%" style="aspect-ratio: 16/9; position: relative; z-index: 2;" frameborder="0" allowfullscreen onload="document.getElementById('videoLoader').style.display='none'"></iframe>
-  `;
+const isVideoPending = DATA.videoStatus === 'pending';
+const hasPlayableVideo = Boolean(DATA.videoUrl && DATA.videoUrl.trim() !== '' && !isVideoPending);
+
+function renderFiles() {
   if (DATA.files && DATA.files.length > 0) {
     let filesHTML = '';
     DATA.files.forEach(file => {
@@ -227,6 +333,35 @@ if (DATA.videoUrl) {
     document.getElementById('fileTarget').style.display = 'none';
     document.getElementById('fileSoonTag').style.display = 'flex';
   }
+}
+
+if (hasPlayableVideo || isVideoPending) {
+  document.getElementById('availableView').style.display = 'block';
+
+  if (hasPlayableVideo) {
+    document.getElementById('videoTarget').innerHTML = `
+      <div id="videoLoader" class="video-loader">
+        <div class="spinner"></div>
+        <span>جاري تحميل الفيديو...</span>
+      </div>
+      <iframe src="${DATA.videoUrl}" width="100%" style="aspect-ratio: 16/9; position: relative; z-index: 2;" frameborder="0" allowfullscreen onload="document.getElementById('videoLoader').style.display='none'"></iframe>
+    `;
+  } else {
+    document.getElementById('statusBadge').className = 'lec-status-badge status-pending-video';
+    document.getElementById('statusBadge').textContent = '⏳ قيد الرفع';
+    document.getElementById('videoTarget').innerHTML = `
+      <div class="video-pending-card" role="status" aria-live="polite">
+        <div class="video-pending-inner">
+          <div class="video-pending-icon">🎬</div>
+          <div class="video-pending-pill"><span class="pending-dot"></span>الفيديو غير متاح حالياً</div>
+          <div class="video-pending-title">${DATA.videoMessage || 'عذراً، لم يتم رفع الفيديو إلى الآن.'}</div>
+          <p class="video-pending-copy">المحاضرة جاهزة ضمن الخطة، وسيظهر الفيديو هنا مباشرة بعد رفعه واعتماده.</p>
+        </div>
+      </div>
+    `;
+  }
+
+  renderFiles();
 } else {
   document.getElementById('soonView').style.display = 'flex';
 }
@@ -268,6 +403,17 @@ function updateUI() {
   const progress = getProgress();
   const isDone = progress.completed.includes(CURRENT_LEC_ID);
   const isNextLocked = role !== 'admin' && progress.locked.includes(NEXT_ID);
+
+  if (isVideoPending) {
+    document.getElementById('completeIcon').textContent = '⏳';
+    document.getElementById('completeTitle').textContent = 'الفيديو لم يُرفع بعد';
+    document.getElementById('completeDesc').textContent = 'سيتم تفعيل تسجيل الإتمام بعد رفع الفيديو.';
+    const btn = document.getElementById('completeBtn');
+    btn.classList.add('disabled-video');
+    btn.disabled = true;
+    document.getElementById('completeBtnText').textContent = 'غير متاح حالياً';
+    return;
+  }
 
   if (isDone && DATA.videoUrl) {
     document.getElementById('completeIcon').textContent = '✅';

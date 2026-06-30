@@ -236,12 +236,13 @@ function renderCards(filter = 'all') {
   allLessons.forEach(lec => {
     const isCompleted = progress.completed.includes(lec.id);
     const isLocked = currentRole !== 'admin' && progress.locked.includes(lec.id);
-    const hasContent = lec.videoUrl && lec.videoUrl.trim() !== '';
-    let state = isLocked ? 'locked' : (isCompleted ? 'completed' : 'available');
+    const isPendingVideo = lec.videoStatus === 'pending';
+    const hasContent = lec.videoUrl && lec.videoUrl.trim() !== '' && !isPendingVideo;
+    let state = isLocked ? 'locked' : (isPendingVideo ? 'pending' : (isCompleted ? 'completed' : 'available'));
 
     if (filter !== 'all' && filter !== state) return;
-    if (isCompleted) completedCount++;
-    if (!isLocked && !isCompleted) availableCount++;
+    if (isCompleted && !isPendingVideo) completedCount++;
+    if (!isLocked && !isCompleted && !isPendingVideo) availableCount++;
 
     const card = document.createElement('div');
     card.className = `lecture-card ${state}`;
@@ -250,14 +251,18 @@ function renderCards(filter = 'all') {
     const lecIcon = iconsMap[lec.id] || '📚'; 
     const targetUrl = `lectures.html?id=${lec.id}`;
 
-    if (isCompleted) {
-      badge = `<span class="card-status-badge badge-completed">✓ مكتملة</span>`;
-      iconHTML = `<span class="card-status-icon">✅</span>`;
-      btn = `<button class="go-btn" onclick="location.href='${targetUrl}'">مراجعة ←</button>`;
-    } else if (isLocked) {
+    if (isLocked) {
       badge = `<span class="card-status-badge badge-locked">🔒 مقفلة</span>`;
       iconHTML = `<div class="locked-overlay">🔒</div>`;
       btn = `<button class="go-btn-ghost" disabled>أكمل السابقة أولاً</button>`;
+    } else if (isPendingVideo) {
+      badge = `<span class="card-status-badge badge-soon">⏳ قيد الرفع</span>`;
+      iconHTML = `<span class="card-status-icon">🎬</span>`;
+      btn = `<button class="go-btn" onclick="location.href='${targetUrl}'">عرض الرسالة ←</button>`;
+    } else if (isCompleted) {
+      badge = `<span class="card-status-badge badge-completed">✓ مكتملة</span>`;
+      iconHTML = `<span class="card-status-icon">✅</span>`;
+      btn = `<button class="go-btn" onclick="location.href='${targetUrl}'">مراجعة ←</button>`;
     } else if (!hasContent) {
       badge = `<span class="card-status-badge badge-soon">⏳ قريباً</span>`;
       iconHTML = `<span class="card-status-icon">⏳</span>`;
@@ -277,13 +282,13 @@ function renderCards(filter = 'all') {
         <div class="card-title">${lec.title || 'محاضرة ' + lec.id}</div>
         <div class="card-desc">${lec.desc || 'سيتم إضافة التفاصيل قريباً'}</div>
         <div class="card-progress">
-          <div class="cp-bar"><div class="cp-fill" style="width:${isCompleted ? 100 : 0}%"></div></div>
-          <div class="cp-label"><span>${isCompleted ? 'مكتملة' : (isLocked ? 'مقفلة' : (!hasContent ? 'قريباً' : 'متاحة'))}</span><span>${isCompleted ? '100%' : '0%'}</span></div>
+          <div class="cp-bar"><div class="cp-fill" style="width:${isCompleted && !isPendingVideo ? 100 : 0}%"></div></div>
+          <div class="cp-label"><span>${isLocked ? 'مقفلة' : (isPendingVideo ? 'قيد الرفع' : (isCompleted ? 'مكتملة' : (!hasContent ? 'قريباً' : 'متاحة')))}</span><span>${isCompleted && !isPendingVideo ? '100%' : '0%'}</span></div>
         </div>
       </div>
       <div class="card-footer">${btn}<span class="duration-tag">⏱ ${durationText}</span></div>`;
 
-    if (!isLocked && hasContent) {
+    if (!isLocked && (hasContent || isPendingVideo)) {
       card.addEventListener('click', e => { if(e.target.tagName !== 'BUTTON') location.href = targetUrl; });
     }
     grid.appendChild(card);
